@@ -1,0 +1,44 @@
+.navitem{
+    text-decoration: none;
+    /* color: white; */
+    cursor: pointer;
+    z-index: 1;
+}
+
+
+.selected{
+    text-decoration: underline;
+    text-underline-offset: 0.7rem;
+    text-decoration-color:#FF7B43;
+    text-decoration-thickness: 2px;
+    color: white !important;
+}
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .hover-underline-animation:hover{
+    color: white;
+  }
+  
+  .hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    top: 2rem;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #FF7B43;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
