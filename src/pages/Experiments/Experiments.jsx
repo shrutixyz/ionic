@@ -4,7 +4,7 @@ import searchbtn from "../../images/searchbtn.svg"
 import ExperimentCard from "../../components/ExperimentCard/ExperimentCard";
 
 const Experiments = () => {
-  const experiments = [true,false,false,true]
+  const experiments = [false,false,true]
   return (
     <>
       <Navbar index={1} />
@@ -19,8 +19,8 @@ const Experiments = () => {
       </div>
       <div className={styles.experimentsparent}>
           {
-            experiments.map((el)=>{
-              return <ExperimentCard locked={el}/>
+            experiments.map((el, index)=>{
+              return <ExperimentCard locked={el} index={index} />
             })
           }
       </div>

@@ -1,5 +1,6 @@
 // import { useNavigate } from "react-router-dom"
 import ColorMixer from "../Experiments/ColorMixer/ColorMixer"
+import FlameTest from "../Experiments/FlameTest/FlameTest"
 import NotFound from "../NotFound/NotFound"
 import { useEffect, useState } from "react"
 
@@ -17,7 +18,13 @@ const Perform  = () =>{
     if(text==="exploring-color-theory"){
         return <ColorMixer />;
     }
-    return <NotFound/>;
+    else if(text==="elements-flame-test"){
+        return <FlameTest/>
+    }
+    else{
+        return <NotFound/>;
+    }
+   
 } 
 
 export default Perform;

@@ -1,0 +1,150 @@
+.experimentbody{
+    height: 85vh;
+    width: 85vw;
+    background-color: #D9D9D9;
+    color: black;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.parent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-top: 5vh; */
+   
+}
+
+.drag{
+    height: 5rem;
+    width: 5rem;
+    background-color: blue;
+}
+
+.plate {
+    position: relative;
+    display: inline-flex; 
+    flex-direction: column;
+    height: fit-content;
+    width: fit-content;
+    background-color: #e4e4e4;
+    border-radius: 50%;
+    justify-content: center;
+    font-size: 15px;
+    box-shadow: 1px 1px 4px 1px #000;
+    padding: 30px;
+    margin: 20px;
+  }
+  
+  .inner_plate {
+    align-self: center;
+    border-radius: 50%;
+    height: fit-content;
+    width: fit-content;
+    border: #dddddd solid 2px;
+    background-color: #d2d2d2;
+    font-size: 1rem;
+    box-shadow: 0 0 10px 10px #cfcfcf;
+    justify-content: center;
+    padding: 25px;
+    text-align: center;
+  }
+  
+  .inner_plate img {
+      margin-top: 5px;
+      max-width: 100%;
+      max-height: 150px;
+      border-radius: 40%;
+      z-index: 1;
+      position: relative;
+      margin: 25px 2px;
+  }
+  
+  .inner_plate h3 {
+      max-width: 250px;
+      padding: 0 15px;
+  }
+
+
+  .plateimg{
+    height: 10rem;
+    
+  }
+
+
+  
+.red{
+    height: 5rem;
+    width: 5rem;
+    background-color: red;
+}
+
+.green{
+    height: 5rem;
+    width: 5rem;
+    background-color: green;
+}
+
+
+.blue{
+    height: 5rem;
+    width: 5rem;
+    background-color: blue;
+}
+
+
+.colordrop{
+    transform: rotate(135deg);
+    border-radius: 30rem 30rem 30rem 0;
+    left: 4.6rem;
+    height: 4rem;
+    width: 4rem;
+    background-color: transparent;
+    position: absolute;
+    border: 2px solid rgba(0, 0, 0, 0.138);
+}
+
+.reset{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+}
+
+
+
+.beaker{
+    height: 7rem;
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.dropper{
+    height: 10rem;
+    position: relative;
+    left: 4rem;
+    bottom: 4.5rem;
+    transform: rotate(30deg);
+    /* pointer-events: none; */
+    /* z-index: -1; */
+}
+
+.droppers{
+    margin-top: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20rem;
+}
+
+.burner{
+    height: 5rem;
+    width: 8rem;
+    background-color: brown;
+    margin-top: -3.5rem;
+}
