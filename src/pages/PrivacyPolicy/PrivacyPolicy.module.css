@@ -1,0 +1,25 @@
+.privacydiv{
+    width: 80vw;
+    height: 80vh;
+    background-color: rgba(31, 31, 46, 0.3);
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.privacyparent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentwrapper{
+    margin: 2rem;
+}
+
+.subtitle{
+    margin-top: -0.5rem;
+    max-width: 100rem;
+    opacity: 0.7;
+}

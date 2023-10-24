@@ -2,6 +2,7 @@ import styles from "./ExperimentCard.module.css";
 import clock from "../../images/clock.svg";
 import { useState } from "react";
 import Modal from "react-modal";
+import lock from "../../images/lock.svg"
 
 const ExperimentCard = (props) => {
   const customStyles = {
@@ -27,7 +28,14 @@ const ExperimentCard = (props) => {
 
   return (
     <>
+      
       <div className={styles.cardbody}>
+      {
+        props.locked?<div className={styles.locked}>
+          <img src={lock} className={styles.lock} alt="" />
+          <p className={styles.locktitle}>This experiment is locked!</p>
+        </div>:<div></div>
+      }
         <div className={styles.cardimg}></div>
         <div className={styles.textcontent}>
           <strong>
