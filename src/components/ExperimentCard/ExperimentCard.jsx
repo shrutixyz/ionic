@@ -3,8 +3,10 @@ import clock from "../../images/clock.svg";
 import { useState } from "react";
 import Modal from "react-modal";
 import lock from "../../images/lock.svg"
+import { useNavigate } from "react-router-dom";
 
 const ExperimentCard = (props) => {
+  const navigate=useNavigate()
   const customStyles = {
     content: {
       top: "50%",
@@ -13,7 +15,9 @@ const ExperimentCard = (props) => {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
+        
     },
+    
   };
 
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -58,11 +62,13 @@ const ExperimentCard = (props) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input placeholder="experiment"/>
-        </form>
+       <div className={styles.modalcontent}>
+        <p>Enter your name</p>
+        <input type="text" placeholder="name"/>
+        <p>Enter room code</p>
+        <input type="text" placeholder="roomcode" />
+        <button onClick={()=>navigate('/perform')}>Join</button>
+       </div>
       </Modal>
     </>
   );

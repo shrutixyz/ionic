@@ -20,7 +20,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="*" element={<Redirect/>} />
-        <Route path="/404" element={<NotFound />} />
+        <Route path="/404/:id" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
