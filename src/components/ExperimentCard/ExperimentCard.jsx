@@ -67,7 +67,7 @@ const ExperimentCard = (props) => {
         <input type="text" placeholder="name"/>
         <p>Enter room code</p>
         <input type="text" placeholder="roomcode" />
-        <button onClick={()=>navigate('/perform')}>Join</button>
+        <button onClick={()=>navigate('/perform?exploring-color-theory')}>Join</button>
        </div>
       </Modal>
     </>
