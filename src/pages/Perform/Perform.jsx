@@ -1,6 +1,6 @@
 // import { useNavigate } from "react-router-dom"
 import ColorMixer from "../Experiments/ColorMixer/ColorMixer"
-import ConcaveLens from "../Experiments/ConcaveLens/ConcaveLens"
+import ConcaveLens from "../Experiments/ConvexLens/ConvexLens"
 import FlameTest from "../Experiments/FlameTest/FlameTest"
 import NotFound from "../NotFound/NotFound"
 import { useEffect, useState } from "react"

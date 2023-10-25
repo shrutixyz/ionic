@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import styles from './Concavelens.module.css'
+import styles from './Convexlens.module.css'
+import convexLens from '../../../images/convex.svg'
 
-const ConcaveLens = () => {
+const ConvexLens = () => {
 
   const [down, setDown] = useState(false);
   const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
@@ -29,15 +30,25 @@ const ConcaveLens = () => {
   }
 
   useEffect(() => {
-    document.getElementById('lens').style.left = mousePosition.x + offset.x + 'px';
+    let newPosition = mousePosition.x + offset.x;
+    let totalWidth = window.innerWidth;
+
+    if (newPosition < totalWidth/2 - 160)
+    {
+      document.getElementById('lens').style.left = mousePosition.x + offset.x + 'px';
+    }
+    
   }, [mousePosition])
 
   return (
     <div className={styles.container} onMouseUp={(e) => mouseUp(e)} onMouseMove={(e)=> mouseMove(e)}>
-      <p></p>
-      <div id='lens' className={styles.lens} onMouseDown={(e) => mouseDown(e)}></div>
+      <div id='center-line' className={styles.centerline}>
+        
+      </div>
+      <img src={convexLens} className={styles.lens} alt="" />
+      <div id='lens' className={styles.image} onMouseDown={(e) => mouseDown(e)}></div>
     </div>
   )
 }
 
-export default ConcaveLens
+export default ConvexLens
