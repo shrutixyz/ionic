@@ -1,5 +1,6 @@
 // import { useNavigate } from "react-router-dom"
 import ColorMixer from "../Experiments/ColorMixer/ColorMixer"
+import ConcaveLens from "../Experiments/ConcaveLens/ConcaveLens"
 import FlameTest from "../Experiments/FlameTest/FlameTest"
 import NotFound from "../NotFound/NotFound"
 import { useEffect, useState } from "react"
@@ -20,6 +21,9 @@ const Perform  = () =>{
     }
     else if(text==="elements-flame-test"){
         return <FlameTest/>
+    }
+    else if(text==="concave-lens-test"){
+        return <ConcaveLens/>
     }
     else{
         return <NotFound/>;

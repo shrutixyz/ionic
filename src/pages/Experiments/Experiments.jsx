@@ -4,7 +4,7 @@ import searchbtn from "../../images/searchbtn.svg"
 import ExperimentCard from "../../components/ExperimentCard/ExperimentCard";
 
 const Experiments = () => {
-  const experiments = [false,false,true]
+  const experiments = [false,false,false,true]
   return (
     <>
       <Navbar index={1} />

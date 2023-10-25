@@ -21,6 +21,12 @@ const ExperimentCard = (props) => {
       link: "elements-flame-test"
     },
     {
+      title: "Concave Lens",
+      time: "8 minutes",
+      subtitle: "Put different chemical elements on a burning flame and observe the changing colors caused due to that!",
+      link: "concave-lens-test"
+    },
+    {
       title: "Electrical Circuits",
       time: "10 minutes",
       subtitle: "Connect the DC bulb correctly to get the light glowing!",
