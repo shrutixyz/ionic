@@ -1,5 +1,5 @@
 .experimentbody{
-    height: 85vh;
+    min-height: 85vh;
     width: 85vw;
     background-color: #D9D9D9;
     color: black;
@@ -118,7 +118,8 @@
 
 
 .beaker{
-    height: 7rem;
+    margin-top: -2rem;
+    height: 10rem;
     position: absolute;
     z-index: 1;
     pointer-events: none;
@@ -129,7 +130,7 @@
     position: relative;
     left: 4rem;
     bottom: 4.5rem;
-    transform: rotate(30deg);
+    transform: rotate(10deg);
     /* pointer-events: none; */
     /* z-index: -1; */
 }
