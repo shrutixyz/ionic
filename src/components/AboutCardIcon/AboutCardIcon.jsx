@@ -1,7 +1,9 @@
 import styles from "./AboutCardIcon.module.css"
-import search from "../../images/searchbtn.svg"
+import alert from "../../images/alert.svg"
+import layers from "../../images/layers.svg"
+import wind from "../../images/wind.svg"
 const AboutCardIcon = (props) =>{
-    const imgs = [search, search, search]
+    const imgs = [alert, layers, wind]
     return (
         <>
             <div className={styles.parentdiv}>

@@ -1,6 +1,6 @@
 .cardbody {
   width: 29rem;
-  height: 30rem;
+  height: 32rem;
   background-color: #d9d9d9;
   border-radius: 1rem;
   color: #000000;
@@ -13,7 +13,9 @@
   width: 27rem;
   height: 15rem;
   border-radius: 1rem;
-  background-color: #f55f5f;
+  background-size: cover;
+  object-fit: cover;
+  /* background-color: #f55f5f; */
 }
 
 .textcontent{
@@ -37,7 +39,7 @@
 
 .locked{
   width: 29rem;
-  height: 30rem;
+  height: 32rem;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.715);
   border-radius: 1rem;
@@ -60,4 +62,23 @@
 .modalcontent{
   height: 60vh;
   width: 60vw;
+}
+
+.tagparent{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+/* margin-bottom: rem; */
+}
+
+.tag{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #AB9FF4;
+  border-radius: 5rem;
+  height: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }

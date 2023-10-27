@@ -38,6 +38,11 @@
     position: fixed;
     bottom: -5rem;
     left: -5rem;
+    transition: 0.2s;
+}
+
+.lb1:hover{
+    transform: scale(1.2);
 }
 
 .lb2{
@@ -45,6 +50,11 @@
     position: fixed;
     bottom: 7rem;
     left: 7rem;
+    transition: 0.2s;
+}
+
+.lb2:hover{
+    transform: scale(1.2);
 }
 
 .lb3{
@@ -52,13 +62,23 @@
     position: fixed;
     bottom: 3rem;
     left: 20rem;
+    transition: 0.4s;
+}
+
+.lb3:hover{
+    transform: scale(1.2);
 }
 
 .rt1{
     width: 20rem;
     position: fixed;
     top: -5rem;
-    right: -5rem
+    right: -5rem;
+    transition: 0.4s;
+}
+
+.rt1:hover{
+    transform: scale(1.2);
 }
 
 .rt2{
@@ -66,4 +86,51 @@
     position: fixed;
     top: 8rem;
     right: -2rem;
+    transition: 0.2s;
+}
+
+.rt2:hover{
+    transform: scale(1.2);
+}
+
+.rocket{
+    height: 3rem;
+    position: absolute;
+    /* bottom: 1rem; */
+    animation: rocketanimation 15s infinite;
+    transform: rotate(0deg);
+    width: 5rem;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    /* animation-duration: 4s; */
+}
+
+  @keyframes rocketanimation {
+    0% {bottom: 0rem; left: 20vw}
+    60% {bottom: 101vh;transform: rotate(45deg);}
+    100% {bottom: 200vh; left: 70vw;}
+  }
+
+  .rocketfire{
+    position: absolute;
+    z-index: 0;
+    top: 3rem;
+    height: 5rem;
+    opacity: 0.1;
+  }
+
+  .rocketfire:hover{
+    opacity: 1;
+  }
+
+  .check{
+    width: 5rem;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+  }
+.rocketprop{
+    height: 5rem;
+    z-index: 1;
 }

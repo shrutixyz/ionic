@@ -3,6 +3,9 @@ import logo from "../../images/logo.svg"
 import styles from "./Home.module.css"
 import bubble from "../../images/bubble.svg"
 import { useNavigate } from "react-router-dom"
+import rocket from "../../images/rock.svg"
+import fire from "../../images/rocketfire.svg"
+
 const Home  = () =>{
     const navigate = useNavigate()
     return (
@@ -23,6 +26,11 @@ const Home  = () =>{
                 <img src={bubble} alt="" className={styles.rt1} />
                 <img src={bubble} alt="" className={styles.rt2} />
             </div>
+            <div className={styles.rocket}>
+                <img src={fire} alt="" className={styles.rocketfire} />
+            <img src={rocket} className={styles.rocketprop} alt="" />
+            </div>
+            
         </>
     )
 } 
