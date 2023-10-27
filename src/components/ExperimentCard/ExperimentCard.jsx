@@ -2,22 +2,23 @@ import styles from "./ExperimentCard.module.css";
 import clock from "../../images/clock.svg";
 import { useState } from "react";
 import Modal from "react-modal";
-import lock from "../../images/lock.svg"
+import lock from "../../images/lock.svg";
 import { useNavigate } from "react-router-dom";
-import img1 from "../../images/covers/img1.png"
-import img2 from "../../images/covers/img2.png"
-import img3 from "../../images/covers/img3.png"
-import img4 from "../../images/covers/img4.png"
-import img5 from "../../images/covers/img5.png"
-import img6 from "../../images/covers/img6.png"
+import img1 from "../../images/covers/img1.png";
+import img2 from "../../images/covers/img2.png";
+import img3 from "../../images/covers/img3.png";
+import img4 from "../../images/covers/img4.png";
+import img5 from "../../images/covers/img5.png";
+import img6 from "../../images/covers/img6.png";
 
 const ExperimentCard = (props) => {
-  console.log("props are ", props)
+  console.log("props are ", props);
   const data = [
     {
       title: "Exploring Color Theory",
       time: "10 minutes",
-      subtitle: "Try mixing different colors with your friends and explore the different patterns and combinations!",
+      subtitle:
+        "Try mixing different colors with your friends and explore the different patterns and combinations!",
       link: "exploring-color-theory",
       locked: false,
       tags: ["art", "science"],
@@ -26,7 +27,8 @@ const ExperimentCard = (props) => {
     {
       title: "Elements Flame Test",
       time: "5 minutes",
-      subtitle: "Put different chemical elements on a burning flame and observe the changing colors caused due to that!",
+      subtitle:
+        "Put different chemical elements on a burning flame and observe the changing colors caused due to that!",
       link: "elements-flame-test",
       locked: false,
       tags: ["thermodynamics", "chemistry"],
@@ -35,7 +37,8 @@ const ExperimentCard = (props) => {
     {
       title: "Convex Lens Focal Length",
       time: "15 minutes",
-      subtitle: "Change the position of the object with respect to the convex lens to obtain a sharp image and find out lens' focal length",
+      subtitle:
+        "Change the position of object with respect to the convex lens to obtain a sharp image and find out lens' focal length",
       link: "convex-lens-test",
       locked: false,
       tags: ["ray optics", "physics"],
@@ -44,7 +47,8 @@ const ExperimentCard = (props) => {
     {
       title: "Concave Lens Focal Length",
       time: "15 minutes",
-      subtitle: "Change the position of the object with respect to the concave lens to obtain a sharp image and find out lens' focal length",
+      subtitle:
+        "Change the position of object with respect to the concave lens to obtain a sharp image and find out lens' focal length",
       link: "concave-lens-test",
       locked: false,
       tags: ["ray optics", "physics"],
@@ -67,10 +71,9 @@ const ExperimentCard = (props) => {
       locked: true,
       tags: ["laws of motion", "thermodynamics", "physics"],
       image: img6,
-    }
-
-  ]
-  const navigate=useNavigate()
+    },
+  ];
+  const navigate = useNavigate();
   const customStyles = {
     content: {
       top: "50%",
@@ -79,9 +82,7 @@ const ExperimentCard = (props) => {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-        
     },
-    
   };
 
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -89,22 +90,22 @@ const ExperimentCard = (props) => {
     setIsOpen(true);
   }
 
-
   function closeModal() {
     setIsOpen(false);
   }
 
   return (
     <>
-      
       <div className={styles.cardbody}>
-      {
-        data[props.index].locked?<div className={styles.locked}>
-          <img src={lock} className={styles.lock} alt="" />
-          <p className={styles.locktitle}>This experiment is locked!</p>
-        </div>:<div></div>
-      }
-      <img src={data[props.index].image} className={styles.cardimg} alt="" />
+        {data[props.index].locked ? (
+          <div className={styles.locked}>
+            <img src={lock} className={styles.lock} alt="" />
+            <p className={styles.locktitle}>This experiment is locked!</p>
+          </div>
+        ) : (
+          <div></div>
+        )}
+        <img src={data[props.index].image} className={styles.cardimg} alt="" />
         {/* <div className={styles.cardimg}></div> */}
         <div className={styles.textcontent}>
           <strong>
@@ -115,16 +116,23 @@ const ExperimentCard = (props) => {
             <p>{data[props.index].time}</p>
           </div>
           <div className={styles.tagparent}>
-            {
-              data[props.index].tags.map((el)=>{
-                return <div className={styles.tag}><p>{el}</p></div>
-              })
-            }
+            {data[props.index].tags.map((el) => {
+              return (
+                <div className={styles.tag}>
+                  <p>{el}</p>
+                </div>
+              );
+            })}
           </div>
-          <p>
-          {data[props.index].subtitle}
-          </p>
-          <button className={styles.performbtn} onClick={()=>{openModal()}}>perform</button>
+          <p>{data[props.index].subtitle}</p>
+          <button
+            className={styles.performbtn}
+            onClick={() => {
+              openModal();
+            }}
+          >
+            perform
+          </button>
         </div>
       </div>
       <Modal
@@ -133,13 +141,21 @@ const ExperimentCard = (props) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-       <div className={styles.modalcontent}>
-        <p>Enter your name</p>
-        <input type="text" placeholder="name"/>
-        <p>Enter room code</p>
-        <input type="text" placeholder="roomcode" />
-        <button onClick={()=>navigate('/perform?'+data[props.index].link)}>Join</button>
-       </div>
+        <div className={styles.modalcontent}>
+          <div>
+            <p className={styles.modallabel}>Enter your name</p>
+            <input type="text" placeholder="Jon Doe" className={styles.modalinput} />
+          </div>
+          <div>
+            <p className={styles.modallabel}>Enter room code</p>
+            <input type="text" placeholder="CUPCAKE" className={styles.modalinput}  />
+          </div>
+          <button className={styles.modalbtn}
+            onClick={() => navigate("/perform?" + data[props.index].link)}
+          >
+            Join
+          </button>
+        </div>
       </Modal>
     </>
   );

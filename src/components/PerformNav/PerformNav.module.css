@@ -11,4 +11,31 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    cursor: pointer;
+}
+
+.navsubright{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.joinees{
+    background-color: #AB9FF430;
+    border-radius: 0.5rem;
+    height: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar{
+    height: 2rem;
+    width: 2rem;
+    background-color: rgb(83, 230, 196);
+    border-radius: 5rem;
 }

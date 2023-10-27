@@ -62,6 +62,11 @@
 .modalcontent{
   height: 60vh;
   width: 60vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: black;
 }
 
 .tagparent{
@@ -81,4 +86,26 @@
   height: 2rem;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.modalinput{
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  height: 3rem;
+  width: 25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1.01rem;
+}
+
+.modallabel{
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+.modalbtn{
+  width: 15rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
 }
