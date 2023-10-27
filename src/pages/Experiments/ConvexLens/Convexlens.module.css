@@ -1,16 +1,21 @@
-.image {
-    width: 100px;
-    height: 100px;
+.object {
+    width: 50px;
+    height: 50px;
     background-color: yellow;
     position: absolute;
     top: 50%;
-    left: 100px;
+    /* left: 100px; */
     transform: translateY(-50%);
 }
 
 .container {
     width: 100%;
+    /* background-color: palegreen; */
+    max-height: 100vh;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .lens {
@@ -23,6 +28,25 @@
 .centerline {
   border-bottom: 1px dashed white;
   width: 90vw;
-  margin: 50vh auto 0;
-  transform: translateY(-50%);
+}
+
+.screen {
+  position: absolute;
+  /* top: 50%; */
+  /* right: 7vw;*/
+  /* transform: translateY(-50%);;  */
+  height: 50px;
+  width: 50px;
+  background-color: violet;
+}
+
+.image {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: skew(20deg, -20deg) translate(-50%, -50%);
+  background-color: greenyellow;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
 }

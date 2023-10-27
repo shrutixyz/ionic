@@ -22,7 +22,7 @@ const Perform  = () =>{
     else if(text==="elements-flame-test"){
         return <FlameTest/>
     }
-    else if(text==="concave-lens-test"){
+    else if(text==="convex-lens-test"){
         return <ConcaveLens/>
     }
     else{
