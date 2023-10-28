@@ -84,6 +84,8 @@ const MemberCursors = ({
             id={`member-cursor-${connectionId}`}
             className="absolute"
             style={{
+              position: 'absolute',
+              zIndex: 1,
               left: `${positions[connectionId].position.x}px`,
               top: `${positions[connectionId].position.y}px`,
             }}
