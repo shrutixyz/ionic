@@ -151,7 +151,9 @@ const ExperimentCard = (props) => {
             <input type="text" placeholder="CUPCAKE" className={styles.modalinput}  />
           </div>
           <button className={styles.modalbtn}
-            onClick={() => navigate("/perform?" + data[props.index].link)}
+            onClick={() => {
+              console.log("/perform/" + data[props.index].link)
+              navigate("/perform/" + data[props.index].link)}}
           >
             Join
           </button>

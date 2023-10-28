@@ -142,3 +142,7 @@
     justify-content: center;
     gap: 20rem;
 }
+
+#live-cursors {
+    background-color: yellow;
+}

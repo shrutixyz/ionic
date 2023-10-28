@@ -3,11 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { AblyProvider } from "ably/react";
+import { nanoid } from "nanoid";
+import { Realtime } from "ably";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const client = new Realtime.Promise({
+  clientId: nanoid(),
+  key: process.env.REACT_APP_VITE_ABLY_KEY,
+});
 root.render(
   <React.StrictMode>
-    <App />
+    <AblyProvider client={client}>
+      <App />
+    </AblyProvider>
   </React.StrictMode>
 );
 

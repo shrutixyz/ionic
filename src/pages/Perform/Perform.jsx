@@ -5,32 +5,29 @@ import ConcaveLens from "../Experiments/ConcaveLens/ConcaveLens"
 import FlameTest from "../Experiments/FlameTest/FlameTest"
 import NotFound from "../NotFound/NotFound"
 import { useEffect, useState } from "react"
-
+import { SpaceContextProvider } from "../../components/AblyIntegration/SpaceContext"
+import { useParams } from "react-router-dom"
 const Perform  = () =>{
     // const mapping = ["exploring-color-theory", "elements-flame-test"]
-    const [text, setText] = useState("")
+    
+    const {id} = useParams();
+    const [text, setText] = useState(id)
     // const navigate = useNavigate();
-    useEffect(()=>{
-        let ans = window.location.search;
-        ans = ans.substring(1, ans.length)
-        console.log(ans)
-        setText(ans)
-        console.log("text hai ", text)
-    }, [text])
+    
     if(text==="exploring-color-theory"){
-        return <ColorMixer />;
+        return <SpaceContextProvider example="member-location"><ColorMixer /></SpaceContextProvider>;
     }
     else if(text==="elements-flame-test"){
-        return <FlameTest/>
+        return <SpaceContextProvider example="member-location"><FlameTest/></SpaceContextProvider>
     }
     else if(text==="convex-lens-test"){
-        return <ConvexLens/>
+        return <SpaceContextProvider example="member-location"><ConvexLens/></SpaceContextProvider>
     }
     else if(text==="concave-lens-test"){
-        return <ConcaveLens/>
+        return <SpaceContextProvider example="member-location"><ConcaveLens/></SpaceContextProvider>
     }
     else{
-        return <NotFound/>;
+        return <SpaceContextProvider example="member-location"><NotFound/></SpaceContextProvider>;
     }
    
 } 

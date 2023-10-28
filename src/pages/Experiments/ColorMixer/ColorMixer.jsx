@@ -1,13 +1,22 @@
 import PerformNav from "../../../components/PerformNav/PerformNav";
 import styles from "./ColorMixer.module.css";
 import plate from "../../../images/plate.png";
-import React, { useRef, useState } from "react";
+import React, { useMemo, useRef, useEffect, useContext, useState } from "react";
 import redbeaker from "../../../images/red.svg";
 import greenbeaker from "../../../images/green.svg";
 import bluebeaker from "../../../images/blue.svg";
 import reddropper from "../../../images/reddropper.svg";
 import greendropper from "../../../images/greendropper.svg";
 import bluedropper from "../../../images/bluedropper.svg";
+import { mockNames } from "../../../utils/mockNames"
+import { SpacesContext } from "../../../components/AblyIntegration/SpaceContext";
+import { MemberCursors, YourCursor } from "../../../components/AblyIntegration/Cursor";
+import useSpaceMembers from "../../../hooks/useMembers";
+import { colours } from "../../../utils/helper";
+
+
+/** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
+const mockName = () => mockNames[Math.floor(Math.random() * mockNames.length)];
 
 const ColorMixer = () => {
   const inputRef = useRef(null);
@@ -15,6 +24,25 @@ const ColorMixer = () => {
   const [g, setG] = useState(0);
   const [b, setB] = useState(0);
   const [bg, setbg] = useState("transparent");
+
+  const name = useMemo(mockName, []);
+  /** 💡 Select a color to assign randomly to a new user that enters the space💡 */
+  const userColors = useMemo(
+    () => colours[Math.floor(Math.random() * colours.length)],
+    [],
+  );
+
+  /** 💡 Get a handle on a space instance 💡 */
+  const space = useContext(SpacesContext);
+
+  useEffect(() => {
+    space?.enter({ name, userColors });
+  }, [space]);
+
+  const { self, otherMembers } = useSpaceMembers(space);
+
+  const liveCursors = useRef(null);
+
   async function dropClr(clr, id) {
     console.log(clr);
     let red = r,
@@ -65,8 +93,23 @@ const ColorMixer = () => {
     setB(0);
   }
   return (
-    <>
+    <div
+    id="live-cursors"
+    ref={liveCursors}
+    className="live-cursors-container example-container">
       <PerformNav title="Exploring Color Theory" />
+      <YourCursor
+        self={self}
+        space={space}
+        parentRef={liveCursors}
+      />
+      <MemberCursors
+        otherUsers={
+          otherMembers.filter((m) => m.isConnected)
+        }
+        space={space}
+        selfConnectionId={self?.connectionId}
+      />
       <div className={styles.parent}>
         <div className={styles.experimentbody}>
           <center>
@@ -141,7 +184,7 @@ const ColorMixer = () => {
           ></div> */}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
