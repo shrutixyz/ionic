@@ -33,6 +33,7 @@ const YourCursor = ({
         zIndex: 1,
         top: `${cursorPosition.top}px`,
         left: `${cursorPosition.left}px`,
+        pointerEvents: 'none'
       }}
     >
       <CursorSvg cursorColor={cursorColor} />
@@ -88,6 +89,7 @@ const MemberCursors = ({
               zIndex: 1,
               left: `${positions[connectionId].position.x}px`,
               top: `${positions[connectionId].position.y}px`,
+              pointerEvents: 'none'
             }}
           >
             <CursorSvg cursorColor={cursorColor} />
