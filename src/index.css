@@ -22,5 +22,9 @@ button{
   color: white;
   cursor: pointer;
   font-size: 1.1rem;
+  transition: 0.2s;
 }
 
+button:hover{
+  transform: scale(1.05);
+}

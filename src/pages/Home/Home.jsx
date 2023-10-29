@@ -5,6 +5,7 @@ import bubble from "../../images/bubble.svg"
 import { useNavigate } from "react-router-dom"
 import rocket from "../../images/rock.svg"
 import fire from "../../images/rocketfire.svg"
+import ablylogo from "../../images/ably.png"
 
 const Home  = () =>{
     const navigate = useNavigate()
@@ -29,6 +30,9 @@ const Home  = () =>{
             <div className={styles.rocket}>
                 <img src={fire} alt="" className={styles.rocketfire} />
             <img src={rocket} className={styles.rocketprop} alt="" />
+            </div>
+            <div className={styles.ablylogo} onClick={()=>window.location.href="https://ably.com/"}>
+            <p>powered by </p><img src={ablylogo} className={styles.logoimg} alt="" /><p> Ably</p>
             </div>
             
         </>

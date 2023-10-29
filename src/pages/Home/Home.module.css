@@ -107,7 +107,8 @@
 }
 
   @keyframes rocketanimation {
-    0% {bottom: 0rem; left: 20vw}
+    0% {bottom: 0rem; left: 20vw; opacity: 0;}
+    2% {opacity: 1;}
     60% {bottom: 101vh;transform: rotate(45deg);}
     100% {bottom: 200vh; left: 70vw;}
   }
@@ -133,4 +134,22 @@
 .rocketprop{
     height: 5rem;
     z-index: 1;
+}
+
+
+.ablylogo{
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    /* height: 2rem; */
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.logoimg{
+    height: 2rem;
 }

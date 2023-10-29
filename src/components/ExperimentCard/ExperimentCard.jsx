@@ -12,7 +12,7 @@ import img5 from "../../images/covers/img5.png";
 import img6 from "../../images/covers/img6.png";
 
 const ExperimentCard = (props) => {
-  console.log("props are ", props);
+  // console.log("props are ", props);
   const data = [
     {
       title: "Exploring Color Theory",
