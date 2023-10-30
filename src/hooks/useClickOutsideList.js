@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 
 const useClickOutsideList = (callback) => {
-  const listRef = useRef<HTMLDivElement>(null);
-  const plusButtonRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef(null);
+  const plusButtonRef = useRef(null);
 
   // 💡 Handler to click outside user list
   useEffect(() => {

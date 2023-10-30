@@ -11,13 +11,13 @@ import UserInfo from "./UserInfo";
 
 
 const SelfAvatar = ({ self }) => {
-  const [hover, setHover] = useState(true);
+  const [hover, setHover] = useState(false);
 
   return (
     <div
       className={styles.avatarContainer}
       onMouseOver={() => setHover(true)}
-      onMouseLeave={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
       <p>You</p>
       <div
@@ -47,8 +47,6 @@ const OtherAvatars = ({
           .map((word) => word.charAt(0))
           .join("");
 
-        console.log(user.profileData)
-
         const inlineStyles ={
           avatarCSS : {
             backgroundColor : user.isConnected ? user.profileData.userColors.cursorColor : "#e2e8f0",
@@ -76,7 +74,6 @@ const OtherAvatars = ({
             borderRadius: '50%',
             position: 'absolute',
             bottom: "1px",
-            left: "0",
             transform: 'translate(50%, 50%)',
             zIndex: '10',
           }
@@ -119,9 +116,9 @@ const Avatars = ({
   self,
 }) => {
   const totalWidth = calculateTotalWidth({ users: otherUsers });
-
+  console.log(otherUsers);
   return (
-    <div style={{ position: 'relative', display: 'flex' }}>
+    <div style={{width:`${totalWidth}px`, position: 'relative', display: 'flex' }}>
       <SelfAvatar self={self} />
       <OtherAvatars
         usersCount={otherUsers.length}

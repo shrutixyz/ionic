@@ -34,17 +34,16 @@ padding: 0.5rem 1rem;
 
 .showList {
     display: flex;
-justify-content: center;
-align-items: center;
-position: absolute;
-right: 0;
-color: white;
-font-size: small;
-background-color: gray;
-border: 2px solid gray;
-height: 3rem;
-width: 3rem;
-border-radius: 100%;
-margin-bottom: 2rem;
-user-select: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: white;
+    font-size: small;
+    background-color: gray;
+    border: 2px solid gray;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 100%;
+    user-select: none;
+    right: 0;
 }
