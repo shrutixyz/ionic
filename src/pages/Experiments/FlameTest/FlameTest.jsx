@@ -4,33 +4,75 @@ import "./FlameTest.css";
 import spatula from "../../../images/spatula.svg";
 import flamestand from "../../../images/burnerstand.svg";
 import petridish from "../../../images/petridish.svg";
-import crystal from "../../../images/crystal.svg";
 import { useEffect, useState } from "react";
 
 const FlameTest = () => {
-  const [MouseCoordinates, setMouseCoordinates] = useState({x:0, y:0})
-  function checkDragMatch(id2){
-    let flame = document.getElementById("flame")
-    
-    let spatula = document.getElementById(id2)
-    // if()
-    console.log(flame.offsetHeight, MouseCoordinates.y)
+  const color_combos = {
+    sodium: ["yellow", "yellow", "yellow", "white"],
+    copper: ["white", "green", "blue", "darkblue"],
+    nickel: ["blue", "green", "cyan", "yellow"],
+    lead: ["blue", "cyan", "lightblue", "white"],
+  };
+
+  function hideSpatula(id) {
+    setTimeout(function () {
+      document.getElementById(id).style.visibility = "hidden";
+    }, 50);
+  }
+  function showSpatula(id) {
+    document.getElementById(id).style.visibility = "visible";
   }
 
-  const mouseMoveHandler = (event) => {
-    setMouseCoordinates({
-        x:event.clientX,
-        y:event.clientY
-    });
+  const [current, setCurrent] = useState("sodium");
+  function resetColors() {
+    document.getElementById("red").style.backgroundColor = "red";
+    document.getElementById("orange").style.backgroundColor = "orange";
+    document.getElementById("yellow").style.backgroundColor = "yellow";
+    document.getElementById("white").style.backgroundColor =
+      "rgb(232, 232, 255)";
+    document.getElementById("red").style.boxShadow = "0px 0px 9px 4px red";
+    document.getElementById("yellow").style.boxShadow =
+      "0px 0px 9px 4px yellow";
+    document.getElementById("orange").style.boxShadow =
+      "0px 0px 9px 4px orange";
+    document.getElementById("white").style.boxShadow =
+      "0px 0px 9px 4px rgb(232, 232, 255)";
   }
-    
-
-  useEffect(()=>{
-    window.addEventListener('mousemove', mouseMoveHandler);
-    return(()=>{
-        window.removeEventListener('mousemove', mouseMoveHandler);
-    })
-  }, [])  
+  useEffect(() => {
+    document.addEventListener(
+      "dragover",
+      function (e) {
+        e = e || window.event;
+        var dragX = e.pageX,
+          dragY = e.pageY;
+        if (
+          Math.abs((dragX-50) - document.getElementById("flame").offsetLeft)  <
+            50 &&
+          Math.abs(dragY - document.getElementById("flame").offsetTop) < 200
+        ) {
+          document.getElementById("red").style.backgroundColor =
+            color_combos[current][0];
+          document.getElementById("red").style.boxShadow =
+            "0px 0px 9px 4px " + color_combos[current][0];
+          document.getElementById("orange").style.backgroundColor =
+            color_combos[current][1];
+          document.getElementById("orange").style.boxShadow =
+            "0px 0px 9px 4px " + color_combos[current][1];
+          document.getElementById("yellow").style.backgroundColor =
+            color_combos[current][2];
+          document.getElementById("yellow").style.boxShadow =
+            "0px 0px 9px 4px " + color_combos[current][2];
+          document.getElementById("white").style.backgroundColor =
+            color_combos[current][3];
+          document.getElementById("white").style.boxShadow =
+            "0px 0px 9px 4px " + color_combos[current][3];
+        } else {
+          resetColors();
+        }
+      },
+      false
+    );
+  }, [current]);
   return (
     <>
       <PerformNav title="Exploring Color Theory" />
@@ -42,23 +84,32 @@ const FlameTest = () => {
               flame to see the color changing!
             </h2>
             <div className="container" id="flame">
-              <div className="red flame"></div>
-              <div className="orange flame"></div>
-              <div className="yellow flame"></div>
-              <div className="white flame"></div>
+              <div className="red flame" id="red"></div>
+              <div className="orange flame" id="orange"></div>
+              <div className="yellow flame" id="yellow"></div>
+              <div className="white flame" id="white"></div>
 
-              {/* <div class="blue circle"></div>
-              <div class="black circle"></div> */}
             </div>
             <img src={flamestand} className={styles.burner} alt="" />
-            {/* <div className={styles.burner}></div> */}
             <br />
           </center>
 
           <div className={styles.droppers}>
             <div className={styles.dropper}>
               <div className={styles.dish}>
-                <div className={styles.spatulaparent} draggable onDrag={()=>checkDragMatch("1")} id="1">
+                <div
+                  className={styles.spatulaparent}
+                  draggable
+                  onDragStart={() => {
+                    setCurrent("sodium");
+                    hideSpatula("1");
+                  }}
+                  onDragEnd={() => {
+                    resetColors();
+                    showSpatula("1");
+                  }}
+                  id="1"
+                >
                   <div
                     className={styles.crystal}
                     style={{ backgroundColor: "#F5BFBF" }}
@@ -67,11 +118,23 @@ const FlameTest = () => {
                 </div>
                 <img src={petridish} className={styles.petridish} alt="" />
               </div>
-              <p>Calcium</p>
+              <p>Sodium</p>
             </div>
             <div className={styles.dropper}>
               <div className={styles.dish}>
-                <div className={styles.spatulaparent} draggable>
+                <div
+                  className={styles.spatulaparent}
+                  draggable
+                  onDragStart={() => {
+                    hideSpatula("2");
+                    setCurrent("copper");
+                  }}
+                  onDragEnd={() => {
+                    resetColors();
+                    showSpatula("2");
+                  }}
+                  id="2"
+                >
                   <div
                     className={styles.crystal}
                     style={{ backgroundColor: "#2E0DFF" }}
@@ -84,7 +147,19 @@ const FlameTest = () => {
             </div>
             <div className={styles.dropper}>
               <div className={styles.dish}>
-                <div className={styles.spatulaparent} draggable>
+                <div
+                  className={styles.spatulaparent}
+                  draggable
+                  onDragStart={() => {
+                    setCurrent("nickel");
+                    hideSpatula("3");
+                  }}
+                  onDragEnd={() => {
+                    resetColors();
+                    showSpatula("3");
+                  }}
+                  id="3"
+                >
                   <div
                     className={styles.crystal}
                     style={{ backgroundColor: "#5BFFCE" }}
@@ -97,7 +172,19 @@ const FlameTest = () => {
             </div>
             <div className={styles.dropper}>
               <div className={styles.dish}>
-                <div className={styles.spatulaparent} draggable>
+                <div
+                  className={styles.spatulaparent}
+                  draggable
+                  onDragStart={() => {
+                    setCurrent("lead");
+                    hideSpatula("4");
+                  }}
+                  onDragEnd={() => {
+                    resetColors();
+                    showSpatula("4");
+                  }}
+                  id="4"
+                >
                   <div
                     className={styles.crystal}
                     style={{ backgroundColor: "#8A8A8A" }}

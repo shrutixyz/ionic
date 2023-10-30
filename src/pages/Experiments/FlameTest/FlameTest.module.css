@@ -160,6 +160,8 @@
 }
 
 .crystal{
+    margin-top: 3rem;
+    position: relative;
     height: 3rem;
     width: 3rem;
     border-radius: 20rem;
@@ -167,7 +169,6 @@
     position: absolute;
     opacity: 0.9;
     pointer-events: none;
-bottom: 11rem;
 }
 
 .spatula{
