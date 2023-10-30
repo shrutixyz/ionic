@@ -6,16 +6,20 @@ import reportWebVitals from './reportWebVitals';
 import { AblyProvider } from "ably/react";
 import { nanoid } from "nanoid";
 import { Realtime } from "ably";
+import Spaces from "@ably/spaces";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const client = new Realtime.Promise({
   clientId: nanoid(),
   key: process.env.REACT_APP_VITE_ABLY_KEY,
 });
+
+const spaces = new Spaces(client);
+
 root.render(
   <React.StrictMode>
     <AblyProvider client={client}>
-      <App />
+      <App spaces={spaces}/>
     </AblyProvider>
   </React.StrictMode>
 );

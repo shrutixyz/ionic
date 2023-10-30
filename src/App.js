@@ -8,15 +8,22 @@ import About from "./pages/About/About";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import NotFound from "./pages/NotFound/NotFound";
 import Redirect from "./pages/NotFound/Redirect";
+import Spaces from "@ably/spaces";
+import { SpaceProvider, SpacesProvider } from "@ably/spaces/react";
 
-function App() {
+function App({spaces}) {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/experiments" element={<Experiments />} />
         <Route path="/room" element={<Room />} />
-        <Route path="/perform/:id" element={<Perform />} />
+        <Route path="/perform/:id" element={
+          <SpacesProvider client={spaces}>
+            <SpaceProvider name="component-locking">
+                <Perform />
+            </SpaceProvider>
+          </SpacesProvider>}></Route>
         <Route path="/about" element={<About />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="*" element={<Redirect/>} />
