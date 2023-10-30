@@ -97,7 +97,7 @@ const ColorMixer = () => {
     id="live-cursors"
     ref={liveCursors}
     className="live-cursors-container example-container">
-      <PerformNav title="Exploring Color Theory" />
+      <PerformNav title="Exploring Color Theory" self={self} otherMembers={otherMembers}/>
       <YourCursor
         self={self}
         space={space}

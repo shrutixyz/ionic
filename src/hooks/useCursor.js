@@ -35,8 +35,6 @@ const useCursor = (
         state: "move",
       });
 
-      console.log("move cursor", relativeLeftPosition, relativeTopPosition, space.cursors)
-
       space.cursors.set({
         position: { x: relativeLeftPosition, y: relativeTopPosition },
         data: { state: "move" },
@@ -44,7 +42,6 @@ const useCursor = (
     };
 
     const handleSelfCursorLeave = (e) => {
-      console.log("move cursor leave")
       setCursorPosition({
         left: 0,
         top: 0,

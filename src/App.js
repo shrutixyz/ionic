@@ -20,7 +20,7 @@ function App({spaces}) {
         <Route path="/room" element={<Room />} />
         <Route path="/perform/:id" element={
           <SpacesProvider client={spaces}>
-            <SpaceProvider name="component-locking">
+            <SpaceProvider name="avatar-stack">
                 <Perform />
             </SpaceProvider>
           </SpacesProvider>}></Route>

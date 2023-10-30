@@ -39,3 +39,10 @@
     background-color: rgb(83, 230, 196);
     border-radius: 5rem;
 }
+
+.avatarStackContainer {
+    display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+}
