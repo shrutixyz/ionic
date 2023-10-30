@@ -1,11 +1,9 @@
 .object {
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
-    position: absolute;
-    top: 50%;
-    /* left: 100px; */
-    transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-image: url("../../../images/ably.png");
+  background-size: cover;
 }
 
 .container {
@@ -18,11 +16,9 @@
     align-items: center;
 }
 
+
 .lens {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   pointer-events: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -38,12 +34,10 @@
 
 .screen {
   position: absolute;
-  /* top: 50%; */
-  /* right: 7vw;*/
-  /* transform: translateY(-50%);;  */
   height: 50px;
   width: 50px;
-  background-color: violet;
+  background-image: url("../../../images/ably.png");
+    background-size: cover;
 }
 
 .image {
@@ -55,4 +49,26 @@
   height: 4rem;
   width: 4rem;
   border-radius: 50%;
+}
+
+
+.experimentbody{
+  min-height: 85vh;
+  max-height: 85vh;
+  width: 85vw;
+  background-color: rgb(31, 30, 28);
+  color: black;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.parent{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-top: 5vh; */
+ 
 }

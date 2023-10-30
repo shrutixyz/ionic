@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import styles from './Concavelens.module.css'
 import Concavelens from '../../../images/concave.svg'
+import PerformNav from '../../../components/PerformNav/PerformNav';
 
 const ConcaveLens = () => {
 
@@ -72,13 +73,20 @@ const ConcaveLens = () => {
   }, [mousePosition])
 
   return (
-    <div className={styles.container} onMouseUp={(e) => mouseUp(e)} onMouseMove={(e)=> mouseMove(e)}>
+    <>
+      <PerformNav title="concave lens practical"/>
+      <div className={styles.parent}>
+      <div className={styles.experimentbody}>
+      <div className={styles.container} onMouseUp={(e) => mouseUp(e)} onMouseMove={(e)=> mouseMove(e)}>
       <div id='center-line' className={styles.centerline}></div>
       <img src={Concavelens} className={styles.lens} alt="" />
       <div id='object' className={styles.object} onMouseDown={(e) => { mouseDown(e)}}></div>
       <div id="screen" className={styles.screen}>
       </div>
     </div>
+      </div>
+      </div>
+          </>
   )
 }
 
