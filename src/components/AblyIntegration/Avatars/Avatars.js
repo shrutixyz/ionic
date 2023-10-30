@@ -51,7 +51,7 @@ const OtherAvatars = ({
 
         const inlineStyles ={
           avatarCSS : {
-            backgroundColor : user.isConnected ? user.profileData.userColors.cursorColor : "red",
+            backgroundColor : user.isConnected ? user.profileData.userColors.cursorColor : "#e2e8f0",
             height: '48px',
             width: '48px',
             borderRadius: '100%',
