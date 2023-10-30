@@ -23,6 +23,7 @@
     position: absolute;
     bottom: 1px;
     transform: translateY(50%) translateX(50%);
+    left: 2px
 }
 
 .hoverYouAvatar {

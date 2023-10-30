@@ -76,6 +76,7 @@ const OtherAvatars = ({
             bottom: "1px",
             transform: 'translate(50%, 50%)',
             zIndex: '10',
+            left: '2px'
           }
         }
 
