@@ -1,0 +1,22 @@
+.sheetparent{
+    position: absolute;
+    right: 7.5vw;
+    width: 30vw;
+    height: 85vh;
+    background-color: #113511;
+    z-index: 3;
+    border: 5px solid rgb(255, 166, 0);
+    /* opacity: 0.4; */
+    color: white;
+}
+
+.p{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
+}
+
+.title{
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
