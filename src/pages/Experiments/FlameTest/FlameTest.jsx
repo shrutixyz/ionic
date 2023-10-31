@@ -4,7 +4,15 @@ import "./FlameTest.css";
 import spatula from "../../../images/spatula.svg";
 import flamestand from "../../../images/burnerstand.svg";
 import petridish from "../../../images/petridish.svg";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useContext } from "react";
+import { mockNames } from "../../../utils/mockNames"
+import { SpacesContext } from "../../../components/AblyIntegration/SpaceContext";
+import useSpaceMembers from "../../../hooks/useMembers";
+import { colours } from "../../../utils/helper";
+
+
+/** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
+const mockName = () => mockNames[Math.floor(Math.random() * mockNames.length)];
 
 const FlameTest = () => {
   const color_combos = {
@@ -13,6 +21,22 @@ const FlameTest = () => {
     nickel: ["blue", "green", "cyan", "yellow"],
     lead: ["blue", "cyan", "lightblue", "white"],
   };
+
+  const name = useMemo(mockName, []);
+  /** 💡 Select a color to assign randomly to a new user that enters the space💡 */
+  const userColors = useMemo(
+    () => colours[Math.floor(Math.random() * colours.length)],
+    [],
+  );
+
+  /** 💡 Get a handle on a space instance 💡 */
+  const space = useContext(SpacesContext);
+
+  useEffect(() => {
+    space?.enter({ name, userColors });
+  }, [space]);
+
+  const { self, otherMembers } = useSpaceMembers(space);
 
   function hideSpatula(id) {
     setTimeout(function () {
@@ -75,7 +99,7 @@ const FlameTest = () => {
   }, [current]);
   return (
     <>
-      <PerformNav title="Exploring Color Theory" />
+      <PerformNav title="Flame Test" self={self} otherMembers={otherMembers}/>
       <div className={styles.parent}>
         <div className={styles.experimentbody}>
           <center>

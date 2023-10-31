@@ -1,14 +1,39 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext, useMemo } from 'react'
 import styles from './Concavelens.module.css'
 import Concavelens from '../../../images/concave.svg'
 import PerformNav from '../../../components/PerformNav/PerformNav';
+import { mockNames } from "../../../utils/mockNames"
+import { SpacesContext } from "../../../components/AblyIntegration/SpaceContext";
+import useSpaceMembers from "../../../hooks/useMembers";
+import { colours } from "../../../utils/helper";
+
+
+/** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
+const mockName = () => mockNames[Math.floor(Math.random() * mockNames.length)];
 
 const ConcaveLens = () => {
 
   const [down, setDown] = useState(false);
   const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
   const [offset, setOffset] = useState({x: 0, y: 0});
-  const [isInitialSetupDone, setisInitialSetupDone] = useState(false)
+  const [isInitialSetupDone, setisInitialSetupDone] = useState(false);
+  
+  const name = useMemo(mockName, []);
+  /** 💡 Select a color to assign randomly to a new user that enters the space💡 */
+  const userColors = useMemo(
+    () => colours[Math.floor(Math.random() * colours.length)],
+    [],
+  );
+
+  /** 💡 Get a handle on a space instance 💡 */
+  const space = useContext(SpacesContext);
+
+  useEffect(() => {
+    space?.enter({ name, userColors });
+  }, [space]);
+
+  const { self, otherMembers } = useSpaceMembers(space);
+
 
   useEffect(()=> {
     let focalLength = window.innerWidth * 0.1;
@@ -74,7 +99,7 @@ const ConcaveLens = () => {
 
   return (
     <>
-      <PerformNav title="concave lens practical"/>
+      <PerformNav title="concave lens practical" self={self} otherMembers={otherMembers}/>
       <div className={styles.parent}>
       <div className={styles.experimentbody}>
       <div className={styles.container} onMouseUp={(e) => mouseUp(e)} onMouseMove={(e)=> mouseMove(e)}>
