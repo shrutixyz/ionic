@@ -176,9 +176,40 @@
     margin-left: 5rem;
 }
 
+
 .filled{
+   
+    position: relative;
+    bottom: 0;
+    height: 5rem;
+    margin-left: 0.5rem;
+    width: 9rem;
+    border-radius:  0 0 20rem 20rem; 
+    border: 1px solid ;
+    border-width: 0 10px 10px  10px;
+    border-color: rgb(0, 0, 0);
+opacity: 1;
+background-color: pink;
+}
+
+
+.ar{
     position: absolute;
-    height: 3rem;
-    width: 3rem;
-    border-radius: 50% 50% 0 0/100% 100% 0 0;
+    right: 10vw;
+    bottom: 10vh;
+    width: 4rem
+}
+
+.i{
+    position: absolute;
+    right: 10vw;
+    bottom: 20vh;
+    width: 2rem
+}
+
+.x{
+    position: absolute;
+    top: 15vh;
+    right: 10vw;
+    z-index: 4;
 }

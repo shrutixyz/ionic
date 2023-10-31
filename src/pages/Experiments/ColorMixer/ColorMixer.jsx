@@ -7,7 +7,7 @@ import greenbeaker from "../../../images/green.svg";
 import bluebeaker from "../../../images/blue.svg";
 import reddropper from "../../../images/reddropper.svg";
 import greendropper from "../../../images/greendropper.svg";
-import dish1 from "../../../images/dish1.svg";
+import ar from "../../../images/ar.svg";
 import bluedropper from "../../../images/bluedropper.svg";
 import { mockNames } from "../../../utils/mockNames";
 import { SpacesContext } from "../../../components/AblyIntegration/SpaceContext";
@@ -18,8 +18,10 @@ import {
 import useSpaceMembers from "../../../hooks/useMembers";
 import { colours } from "../../../utils/helper";
 import Chat from "../../../components/AblyIntegration/Chat/Chat";
-import blueprint from "../../../images/blueprint.svg";
+import i from "../../../images/i.svg";
+import x from "../../../images/x.svg";
 import board from "../../../images/board1.svg";
+import InfoSheet from "../../../components/InfoSheet/InfoSheet";
 
 /** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
 const mockName = () => mockNames[Math.floor(Math.random() * mockNames.length)];
@@ -41,7 +43,7 @@ const ColorMixer = () => {
   /** 💡 Get a handle on a space instance 💡 */
   const space = useContext(SpacesContext);
   // console.log("space is ", space.channel.name)
-
+  const [isInfoOpen, setInfoOpen] = useState(false);
   useEffect(() => {
     space?.enter({ name, userColors });
   }, [space]);
@@ -121,8 +123,19 @@ const ColorMixer = () => {
       {space ? <Chat /> : <div></div>}
       <div className={styles.parent}>
         <div className={styles.experimentbody}>
+          <img src={ar} className={styles.ar} alt="" />
+          <img src={i} onClick={()=>{setInfoOpen(true)}} className={styles.i} alt="" />
+
           <img src={board} alt="" style={{ marginTop: "2rem" }} />
 
+          {isInfoOpen ? (
+           <div onClick={()=>{setInfoOpen(false)}}>
+             <img src={x} className={styles.x} alt="" />
+           </div>
+          ) : (
+            <div></div>
+          )}
+          {isInfoOpen ? <InfoSheet index={0}/> : <div></div>}
           <br />
 
           <button onClick={() => reset()} className={styles.reset}>
@@ -178,7 +191,6 @@ const ColorMixer = () => {
                 </div>
               </div>
               <div className={styles.dish}>
-                <img src={dish1} alt="" />
                 <div
                   className={styles.filled}
                   ref={inputRef}
