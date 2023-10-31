@@ -13,6 +13,7 @@ import { SpacesContext } from "../../../components/AblyIntegration/SpaceContext"
 import { MemberCursors, YourCursor } from "../../../components/AblyIntegration/Cursor";
 import useSpaceMembers from "../../../hooks/useMembers";
 import { colours } from "../../../utils/helper";
+import Chat from "../../../components/AblyIntegration/Chat/Chat";
 
 
 /** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
@@ -34,6 +35,7 @@ const ColorMixer = () => {
 
   /** 💡 Get a handle on a space instance 💡 */
   const space = useContext(SpacesContext);
+  // console.log("space is ", space.channel.name)
 
   useEffect(() => {
     space?.enter({ name, userColors });
@@ -110,6 +112,7 @@ const ColorMixer = () => {
         space={space}
         selfConnectionId={self?.connectionId}
       />
+      <Chat/>
       <div className={styles.parent}>
         <div className={styles.experimentbody}>
           <center>
