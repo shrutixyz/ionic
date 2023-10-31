@@ -23,7 +23,7 @@ export const AblyPoweredInput = ({
   const [lockHolder, setlockHolder] = useState(member);
   const [locked, setlocked] = useState(status === "locked");
   const [lockedByYou, setlockedByYou] = useState(locked && lockHolder?.connectionId === self?.connectionId);
-
+  const [isSubscribed, setisSubscribed] = useState(false)
 
   // useEffect(() => {
 
@@ -33,18 +33,40 @@ export const AblyPoweredInput = ({
   // let locked = status === "locked";
   // let lockedByYou = locked && lockHolder?.connectionId === self?.connectionId;
 
-  useEffect(() => {
+  useEffect( () => {
     if (!space) return;
+
+    if (!isSubscribed) {
+      space.locks.getAll().then((locks) => {
+
+        locks.forEach(lock => {
+          if(lock && lock.id == name){
+
+
+            console.log(lock.status, name)
+            setlocked(lock.status == "locked");
+            setlockHolder(lock.member ? lock.member : null);
+            // lockHolder = isLocked.member;
+            setlockedByYou(lock.member.connectionId === self?.connectionId && lock.status);
+            // lockedByYou = locked && lockHolder?.connectionId === self?.connectionId;
+            // return;
+          } 
+        });
+      });
+    }
+
+    
 
     space.locks.subscribe("update", (lock) => {
       // const isLocked = space?.locks.get(name); 
-    
+    console.log("after lock subscribe", space.locks)
+    setisSubscribed(true);
     if(lock && lock.id == name){
 
 
-      console.log(lock.status, name)
+      console.log(lock.status, name, lock.status == "locked", lock.member)
       setlocked(lock.status == "locked");
-      setlockHolder(lock.member ? lock.member : null);
+      setlockHolder(lock.member && lock.status == "locked" ? lock.member : null);
       // lockHolder = isLocked.member;
       setlockedByYou(lock.member.connectionId === self?.connectionId && lock.status);
       // lockedByYou = locked && lockHolder?.connectionId === self?.connectionId;
@@ -110,7 +132,7 @@ export const AblyPoweredInput = ({
       lockHolder={lockHolder}
     />
     <p>{lockedByYou}</p>
-    <p>{lockHolder?.profileData.memberName}</p>
+    <p>{lockHolder?.profileData.name}</p>
     </>
   );
 };
