@@ -15,11 +15,11 @@ const ExperimentCard = (props) => {
   // console.log("props are ", props);
   const data = [
     {
-      title: "Exploring Color Theory",
+      title: "Exploring Colour Theory",
       time: "10 minutes",
       subtitle:
-        "Try mixing different colors with your friends and explore the different patterns and combinations!",
-      link: "exploring-color-theory",
+        "Try mixing different colours with your friends and explore the different patterns and combinations!",
+      link: "exploring-colour-theory",
       locked: false,
       tags: ["art", "science"],
       image: img1,
@@ -94,6 +94,9 @@ const ExperimentCard = (props) => {
     setIsOpen(false);
   }
 
+  const [username, setUsername] = useState("")
+  const [roomname, setRoomname] = useState("")
+
   return (
     <>
       <div className={styles.cardbody}>
@@ -144,15 +147,17 @@ const ExperimentCard = (props) => {
         <div className={styles.modalcontent}>
           <div>
             <p className={styles.modallabel}>Enter your name</p>
-            <input type="text" placeholder="Jon Doe" className={styles.modalinput} />
+            <input type="text" placeholder="Jon Doe" className={styles.modalinput} onChange={(evt)=>setUsername(evt.target.value)}/>
           </div>
           <div>
             <p className={styles.modallabel}>Enter room code</p>
-            <input type="text" placeholder="CUPCAKE" className={styles.modalinput}  />
+            <input type="text" placeholder="CUPCAKE" className={styles.modalinput}  onChange={(evt)=>setRoomname(evt.target.value)} />
           </div>
           <button className={styles.modalbtn}
-            onClick={() => {
+            onClick={async () => {
               console.log("/perform/" + data[props.index].link)
+              await sessionStorage.setItem("username", username)
+              await sessionStorage.setItem("roomname", roomname)
               navigate("/perform/" + data[props.index].link)}}
           >
             Join

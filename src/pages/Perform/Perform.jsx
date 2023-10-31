@@ -14,7 +14,7 @@ const Perform  = () =>{
     const [text, setText] = useState(id)
     // const navigate = useNavigate();
     
-    if(text==="exploring-color-theory"){
+    if(text==="exploring-colour-theory"){
         return <SpaceContextProvider example="member-location"><ColorMixer /></SpaceContextProvider>;
     }
     else if(text==="elements-flame-test"){

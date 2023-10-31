@@ -2,11 +2,13 @@
     min-height: 85vh;
     width: 85vw;
     background-color: #D9D9D9;
+    background: linear-gradient(60deg, #B9D5FF, #D5D5D5);
     color: black;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 }
 
 .parent{
@@ -147,3 +149,36 @@
     background-color: yellow;
 }
 
+
+.blueprint{
+    position: absolute;
+
+    right: 12rem;
+}
+
+.table{
+    background-color: #453128;
+    height: 5rem;
+    width: 60vw;
+}
+
+.tableitems{
+    display: flex;
+    align-items: flex-end;
+    gap: 8rem;
+}
+
+.indidropper{
+    margin-bottom: -3rem;
+}
+
+.dish{
+    margin-left: 5rem;
+}
+
+.filled{
+    position: absolute;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50% 50% 0 0/100% 100% 0 0;
+}

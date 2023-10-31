@@ -7,14 +7,19 @@ import greenbeaker from "../../../images/green.svg";
 import bluebeaker from "../../../images/blue.svg";
 import reddropper from "../../../images/reddropper.svg";
 import greendropper from "../../../images/greendropper.svg";
+import dish1 from "../../../images/dish1.svg";
 import bluedropper from "../../../images/bluedropper.svg";
-import { mockNames } from "../../../utils/mockNames"
+import { mockNames } from "../../../utils/mockNames";
 import { SpacesContext } from "../../../components/AblyIntegration/SpaceContext";
-import { MemberCursors, YourCursor } from "../../../components/AblyIntegration/Cursor";
+import {
+  MemberCursors,
+  YourCursor,
+} from "../../../components/AblyIntegration/Cursor";
 import useSpaceMembers from "../../../hooks/useMembers";
 import { colours } from "../../../utils/helper";
 import Chat from "../../../components/AblyIntegration/Chat/Chat";
-
+import blueprint from "../../../images/blueprint.svg";
+import board from "../../../images/board1.svg";
 
 /** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
 const mockName = () => mockNames[Math.floor(Math.random() * mockNames.length)];
@@ -30,7 +35,7 @@ const ColorMixer = () => {
   /** 💡 Select a color to assign randomly to a new user that enters the space💡 */
   const userColors = useMemo(
     () => colours[Math.floor(Math.random() * colours.length)],
-    [],
+    []
   );
 
   /** 💡 Get a handle on a space instance 💡 */
@@ -78,15 +83,17 @@ const ColorMixer = () => {
     setB(blue);
     // el.style.backgroundColor="blue"
     setbg(`rgb(${red}, ${green}, ${blue})`);
-    showDropper(id)
+    showDropper(id);
     // el.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
   }
 
-  function hideDropper(id){
-    setTimeout(function (){document.getElementById(id).style.visibility = "hidden"}, 50)
+  function hideDropper(id) {
+    setTimeout(function () {
+      document.getElementById(id).style.visibility = "hidden";
+    }, 50);
   }
-  function showDropper(id){
-    document.getElementById(id).style.visibility = "visible"
+  function showDropper(id) {
+    document.getElementById(id).style.visibility = "visible";
   }
   function reset() {
     setbg("transparent");
@@ -96,95 +103,99 @@ const ColorMixer = () => {
   }
   return (
     <div
-    id="live-cursors"
-    ref={liveCursors}
-    className="live-cursors-container example-container">
-      <PerformNav title="Exploring Color Theory" self={self} otherMembers={otherMembers}/>
-      <YourCursor
+      id="live-cursors"
+      ref={liveCursors}
+      className="live-cursors-container example-container"
+    >
+      <PerformNav
+        title="Exploring Color Theory"
         self={self}
-        space={space}
-        parentRef={liveCursors}
+        otherMembers={otherMembers}
       />
+      <YourCursor self={self} space={space} parentRef={liveCursors} />
       <MemberCursors
-        otherUsers={
-          otherMembers.filter((m) => m.isConnected)
-        }
+        otherUsers={otherMembers.filter((m) => m.isConnected)}
         space={space}
         selfConnectionId={self?.connectionId}
       />
-      <Chat/>
+      {space ? <Chat /> : <div></div>}
       <div className={styles.parent}>
         <div className={styles.experimentbody}>
-          <center>
-            <h2>
-              Mix Colors into the central pallete by dragging and dropping into
-              the plate
-            </h2>
-            <div class={styles.plate}>
-              <div
-                className={styles.colordrop}
-                ref={inputRef}
-                id="colordrop"
-                style={{ backgroundColor: bg }}
-              ></div>
-              <img src={plate} className={styles.plateimg} alt="" />
-            </div>
-            <br />
+          <img src={board} alt="" style={{ marginTop: "2rem" }} />
 
-            <button onClick={() => reset()} className={styles.reset}>
-              Reset
-            </button>
-          </center>
+          <br />
 
-          <div className={styles.droppers}>
-            <div className={styles.indidropper}> 
-              <img src={redbeaker} className={styles.beaker} alt="" />
-              <div
-                draggable
-                onDragEnd={() => dropClr("r", "reddropper")}
-                onDragStart={() => hideDropper("reddropper")}
-                
-              >
-                <img src={reddropper} className={styles.dropper} alt="" id="reddropper" />
+          <button onClick={() => reset()} className={styles.reset}>
+            Reset
+          </button>
+          <div style={{ height: "5rem" }}></div>
+
+          <div className={styles.bench}>
+            <div className={styles.tableitems}>
+              <div className={styles.indidropper}>
+                <img src={redbeaker} className={styles.beaker} alt="" />
+                <div
+                  draggable
+                  onDragEnd={() => dropClr("r", "reddropper")}
+                  onDragStart={() => hideDropper("reddropper")}
+                >
+                  <img
+                    src={reddropper}
+                    className={styles.dropper}
+                    alt=""
+                    id="reddropper"
+                  />
+                </div>
+              </div>
+              <div className={styles.indidropper}>
+                <img src={greenbeaker} className={styles.beaker} alt="" />
+                <div
+                  draggable
+                  onDragEnd={() => dropClr("g", "greendropper")}
+                  onDragStart={() => hideDropper("greendropper")}
+                >
+                  <img
+                    src={greendropper}
+                    className={styles.dropper}
+                    alt=""
+                    id="greendropper"
+                  />
+                </div>
+              </div>
+              <div className={styles.indidropper}>
+                <img src={bluebeaker} className={styles.beaker} alt="" />
+                <div
+                  draggable
+                  onDragEnd={() => dropClr("b", "bluedropper")}
+                  onDragStart={() => hideDropper("bluedropper")}
+                >
+                  <img
+                    src={bluedropper}
+                    className={styles.dropper}
+                    alt=""
+                    id="bluedropper"
+                  />
+                </div>
+              </div>
+              <div className={styles.dish}>
+                <img src={dish1} alt="" />
+                <div
+                  className={styles.filled}
+                  ref={inputRef}
+                  id="colordrop"
+                  style={{ backgroundColor: bg }}
+                ></div>
+                {/* <div
+                  className={styles.colordrop}
+                  ref={inputRef}
+                  id="colordrop"
+                  style={{ backgroundColor: bg }}
+                ></div>
+                <img src={plate} className={styles.plateimg} alt="" /> */}
               </div>
             </div>
-            <div className={styles.indidropper}> 
-              <img src={greenbeaker} className={styles.beaker} alt="" />
-              <div
-                draggable
-                onDragEnd={() => dropClr("g", "greendropper")}
-                onDragStart={() => hideDropper("greendropper")}
-              >
-                <img src={greendropper} className={styles.dropper} alt="" id="greendropper" />
-              </div>
-            </div>
-            <div className={styles.indidropper}> 
-              <img src={bluebeaker} className={styles.beaker} alt="" />
-              <div
-                draggable
-                onDragEnd={() => dropClr("b", "bluedropper")}
-                onDragStart={() => hideDropper("bluedropper")}
-              >
-                <img src={bluedropper} className={styles.dropper} alt="" id="bluedropper"/>
-              </div>
-            </div>
+            <div className={styles.table}></div>
           </div>
-          {/* <div
-            className={styles.red}
-            draggable
-            onDragEnd={() => dropClr("r")}
-            onDragStart={() => console.log("drag started")}
-          ></div>
-          <div
-            className={styles.green}
-            draggable
-            onDragEnd={() => dropClr("g")}
-          ></div>
-          <div
-            className={styles.blue}
-            draggable
-            onDragEnd={() => dropClr("b")}
-          ></div> */}
         </div>
       </div>
     </div>

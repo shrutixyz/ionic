@@ -3,6 +3,7 @@ import Spaces from "@ably/spaces";
 import { useAbly } from "ably/react";
 import { useState } from "react";
 import { getSpaceNameFromUrl } from "../../utils/helper";
+import { Realtime } from "ably";
 
 const SpacesContext = React.createContext(undefined);
 
@@ -16,9 +17,9 @@ const SpaceContextProvider = ({ example, children }) => {
 
   React.useEffect(() => {
     let ignore = false;
-    const spaceName = getSpaceNameFromUrl();
-
     const init = async () => {
+      const spaceName =await getSpaceNameFromUrl();
+      // await spaces.client.connect
       const spaceInstance = await spaces.get(spaceName, {
         offlineTimeout: 10_000,
       });

@@ -45,3 +45,18 @@ justify-content: center;
 align-items: center;
 position: relative;
 }
+
+.navsubleft{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.backbtn{
+    cursor: pointer;
+}
+
+.title{
+    margin-top: 0.8rem;
+}

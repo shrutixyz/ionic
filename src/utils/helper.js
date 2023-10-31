@@ -21,24 +21,30 @@ export const HORIZONTAL_SPACING_OFFSET = 40;
 export const OVERLAP_AMOUNT = 40;
 export const AVATAR_WIDTH = 48;
 
-export const getSpaceNameFromUrl = () => {
+export const getSpaceNameFromUrl = async () => {
   const url = new URL(window.location.href);
   const spaceNameInParams = url.searchParams.get("space");
 
   if (spaceNameInParams) {
+    console.log("alreadu")
+    console.warn(spaceNameInParams)
     return spaceNameInParams;
   } else {
-    const generatedName = generate({ exactly: 3, join: "-" });
+    console.log("teddy")
+    const roomname = await sessionStorage.getItem("roomname");
+    let generatedName;
+    if (roomname.length > 2) {
+      generatedName = roomname;
+    } else {
+      generatedName = generate({ exactly: 3, join: "-" });
+    }
     url.searchParams.set("space", generatedName);
     window.history.replaceState({}, "", `?${url.searchParams.toString()}`);
     return generatedName;
   }
 };
 
-export function calculateRightOffset({
-  usersCount,
-  index = 0,
-}) {
+export function calculateRightOffset({ usersCount, index = 0 }) {
   return usersCount > MAX_USERS_BEFORE_LIST
     ? (index + 1) * HORIZONTAL_SPACING_OFFSET
     : index * HORIZONTAL_SPACING_OFFSET;

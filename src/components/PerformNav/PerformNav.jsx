@@ -1,35 +1,41 @@
 import { useNavigate } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import styles from "./PerformNav.module.css";
-import { useMemo } from "react";
-import { useEffect } from "react";
-import { useSpace, useMembers } from "@ably/spaces/react";
-import { getMemberName } from "../../utils/mockNames";
-import { getMemberColor } from "../../utils/mockColours";
+import back from "../../images/arrow-left.svg";
 import Avatars from "../AblyIntegration/Avatars/Avatars";
+import share from "../../images/share.svg";
+import { RWebShare } from "react-web-share";
 
 const PerformNav = (props) => {
-  // const participants = [1,2];
-
-  // const name = useMemo(getMemberName, []);
-  // const memberColor = useMemo(getMemberColor, []);
-
-  /** 💡 Get a handle on a space instance 💡 */
-  // const { space } = useSpace();
-
-  // useEffect(() => {
-  //   space?.enter({ name, memberColor });
-  // }, [space]);
-
-  // /** 💡 Get everybody except the local member in the space and the local member 💡 */
-  // const { others, self } = useMembers();
-
-  console.log(props.otherMembers)
+  console.log(props.otherMembers);
   const navigate = useNavigate();
   return (
     <>
       <div className={styles.nav}>
-        <h2>{props.title}</h2>
+        <div className={styles.navsubleft}>
+          <div
+            className={styles.backbtn}
+            onClick={() => {
+              navigate("/experiments");
+            }}
+          >
+            <img src={back} alt="" />
+          </div>
+          <h2 className={styles.title}>{props.title}</h2>
+
+          <RWebShare
+            data={{
+              text: "ionic",
+              url: window.location,
+              title: "Perform "+props.title + " practical with friends",
+            }}
+            onClick={() => console.log("shared successfully!")}
+          >
+            <div className={styles.backbtn}>
+              <img src={share} alt="" />
+            </div>
+          </RWebShare>
+        </div>
         <div className={styles.navsubright}>
           <div className={styles.joinees}>
             <div className={styles.avatarStackContainer} id="avatar-stack">

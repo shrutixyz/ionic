@@ -8,7 +8,7 @@ const Experiments = () => {
   const experiments = [0,1,2,3,4,5]
   const [ experimentsShow, setExperimentsShow] = useState(experiments)
   const [searchtxt, setSearch] = useState("")
-  const titles = ["Exploring Color Theory", "Elements Flame Test", "Convex LensConvex Lens Focal Length", "Concave Lens Focal Length", "Electrical Circuits", "Rocket Propulsion Mechanics"]
+  const titles = ["Exploring Colour Theory", "Elements Flame Test", "Convex LensConvex Lens Focal Length", "Concave Lens Focal Length", "Electrical Circuits", "Rocket Propulsion Mechanics"]
   useEffect(() => {
     const listener = event => {
       if (event.code === "Enter" || event.code === "NumpadEnter") {

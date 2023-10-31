@@ -6,7 +6,6 @@ import { useState } from "react";
 
 const Chat = (props) => {
     const urlParams = new URLSearchParams(window.location.search);
-// const myParam = urlParams.get('myParam');
   const channelname = urlParams.get("space");
   console.log("chat is ", channelname)
 
@@ -22,7 +21,6 @@ const Chat = (props) => {
   const sendChatMessage = (messageText) => {
     channel.publish({ name: channelname, data: messageText });
     setMessageText("");
-    console.log(receivedMessages)
   };
 
   const TextIcon = (props) => {
@@ -51,11 +49,13 @@ const Chat = (props) => {
         <img src={messageicon} alt="" />
       </div>
       <div className={styles.chats} id="chats" style={{ display: "none" }}>
-        <div>
+        <div className={styles.chatmessages}>
             {
                 receivedMessages.map((el, index)=>{
+                    
                    return  <TextIcon text={el.data} sender={el.connectionId} key={index}/>
                 })
+
             }
         </div>
         <div className={styles.inputtxt}>
@@ -81,3 +81,14 @@ const Chat = (props) => {
 };
 
 export default Chat;
+
+
+// const Chat = ()=>{
+//     return (
+//         <>
+        
+//         </>
+//     )
+// }
+
+// export default Chat

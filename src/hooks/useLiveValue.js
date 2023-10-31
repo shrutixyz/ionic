@@ -1,5 +1,5 @@
 import { useChannel } from "ably/react";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { getSpaceNameFromUrl } from "../utils/helper";
 
@@ -8,10 +8,42 @@ export const useLiveValue = (componentName, self) => {
 
   /** 💡 Use rewind to get the last message from the channel. See https://ably.com/docs/channels/options/rewind 💡 */
   const channelName = `[?rewind=1]${getSpaceNameFromUrl()}-${componentName}`;
-  const { channel } = useChannel(channelName, (message) => {
-    if (message.connectionId === self?.connectionId) return;
-    setValue(message.data);
-  });
+
+  const [didSetOption, setDidSetOption] = useState(false);
+  const [channel] = useChannel(
+    didSetOption
+      ? { 
+        
+        channelName:channelName ,
+        callbackOnMessage: (message) => {
+          if (message.connectionId === self?.connectionId) return;
+          setValue(message.data);
+        },
+
+      }
+      : {
+            channelName:channelName ,
+        callbackOnMessage: (message) => {
+          if (message.connectionId === self?.connectionId) return;
+          setValue(message.data);
+        },
+          options: {
+            params: { occupancy: "metrics" },
+            modes: ["SUBSCRIBE"],
+          },
+        },
+  );
+
+
+
+  // const { channel } = useChannel(channelName, (message) => {
+  //   if (message.connectionId === self?.connectionId) return;
+  //   setValue(message.data);
+  // });
+
+    useEffect(() => {
+    setDidSetOption(true);
+  }, [channel]);
 
   const handleChange = useCallback(
     (nextValue) => {
