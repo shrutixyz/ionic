@@ -27,7 +27,7 @@ export const getSpaceNameFromUrl = async () => {
 
   if (spaceNameInParams) {
     console.log("alreadu")
-    console.warn(spaceNameInParams)
+    console.log(spaceNameInParams)
     return spaceNameInParams;
   } else {
     console.log("teddy")

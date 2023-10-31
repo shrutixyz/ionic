@@ -53,5 +53,7 @@ export const useLiveValue = (componentName, self) => {
     [channel],
   );
 
+  console.log(value, "value live")
+
   return [value, handleChange];
 };

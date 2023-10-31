@@ -9,6 +9,7 @@ import { mockNames } from "../../../utils/mockNames"
 import { SpacesContext } from "../../../components/AblyIntegration/SpaceContext";
 import useSpaceMembers from "../../../hooks/useMembers";
 import { colours } from "../../../utils/helper";
+import Form from "../../../components/AblyIntegration/ComponentLock/Form";
 
 
 /** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
@@ -98,8 +99,9 @@ const FlameTest = () => {
     );
   }, [current]);
   return (
-    <>
+    <div id="component-locking">
       <PerformNav title="Flame Test" self={self} otherMembers={otherMembers}/>
+      <Form space={space} self={self}/>
       <div className={styles.parent}>
         <div className={styles.experimentbody}>
           <center>
@@ -222,7 +224,7 @@ const FlameTest = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
