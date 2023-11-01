@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import cn from "classnames";
 import { useOnClickOutside } from "usehooks-ts";
 // import { getCellStylesForMember } from "../../";
@@ -21,6 +21,13 @@ const InputCell = ({
   const memberColor = lockHolder?.profileData.userColors.cursorColor;
   const memberName = lockedByYou ? "You" : lockHolder?.profileData.name;
   const [correct, setcorrect] = useState(false);
+  const [isLens, setIsLens] = useState(false);
+
+  useEffect(() => {
+    if(['u1', 'u2', 'u3', 'v1', 'v2', 'v3', 'm1', 'm2', 'm3'].includes(name)){
+      setIsLens(true);
+    }
+  }, [])
 
   const handleChange = useCallback(
     (e) => {
@@ -67,7 +74,7 @@ const InputCell = ({
           onChange={handleChange}
           onFocus={onFocus}
           disabled={readOnly}
-          placeholder="Click to lock and guess the element"
+          placeholder={isLens ? name : "Click to lock and guess the element"}
           style={{
             padding: '0.5rem',
             fontSize: '1rem',

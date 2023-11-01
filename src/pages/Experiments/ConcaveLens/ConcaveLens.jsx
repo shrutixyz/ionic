@@ -15,6 +15,9 @@ import ar from "../../../images/ar.svg";
 
 import board from "../../../images/board4.svg";
 import Chat from '../../../components/AblyIntegration/Chat/Chat';
+import {AblyPoweredInput} from '../../../components/AblyIntegration/ComponentLock/AblyPoweredInput';
+
+
 /** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
 const mockName = () => mockNames[Math.floor(Math.random() * mockNames.length)];
 
@@ -113,7 +116,7 @@ const ConcaveLens = () => {
       {space ? <Chat /> : <div></div>}
       <div className={styles.parent}>
       <div className={styles.experimentbody}>
-      <img src={board} alt="" style={{ marginTop: "2rem" }} />
+      <img src={board} alt="" style={{ marginTop: "0.25rem" }} />
         <table className={styles.datatable}>
     <thead>
         <tr>
@@ -124,19 +127,86 @@ const ConcaveLens = () => {
     </thead>
     <tbody>
         <tr>
-            <td><input type="number" className={styles.readinginput} name="u1" /></td>
-            <td><input type="number" className={styles.readinginput} name="v1" /></td>
-            <td><input type="number" className={styles.readinginput} name="m1" /></td>
+            <td>
+            {space && self ? <AblyPoweredInput
+                  key="u1"
+                  // label={entry.label}
+                  name="u1"
+                  space={space}
+                  self={self}
+                />: ""}
+            </td>
+            <td>
+            {space && self ? <AblyPoweredInput
+                  key="v1"
+                  // label={entry.label}
+                  name="v1"
+                  space={space}
+                  self={self}
+                />: ""}
+            </td>
+            <td>
+              {space && self ? <AblyPoweredInput
+                  key="m1"
+                  // label={entry.label}
+                  name="m1"
+                  space={space}
+                  self={self}
+                />: ""}
+              </td>
         </tr>
         <tr>
-            <td><input type="number" className={styles.readinginput} name="u2" /></td>
-            <td><input type="number" className={styles.readinginput} name="v2" /></td>
-            <td><input type="number" className={styles.readinginput} name="m2" /></td>
+            <td>
+            {space && self ? <AblyPoweredInput
+                  key="u2"
+                  name="u2"
+                  space={space}
+                  self={self}
+                />: ""}
+            </td>
+            <td>
+            {space && self ? <AblyPoweredInput
+                  key="v2"
+                  name="v2"
+                  space={space}
+                  self={self}
+                />: ""}
+            </td>
+            <td>
+            {space && self ? <AblyPoweredInput
+                  key="m2"
+                  name="m2"
+                  space={space}
+                  self={self}
+                />: ""}
+            </td>
         </tr>
         <tr>
-            <td><input type="number" className={styles.readinginput} name="u3" /></td>
-            <td><input type="number" className={styles.readinginput} name="v3" /></td>
-            <td><input type="number" className={styles.readinginput} name="m3" /></td>
+        <td>
+            {space && self ? <AblyPoweredInput
+                  key="u3"
+                  name="u3"
+                  space={space}
+                  self={self}
+                />: ""}
+          </td>
+          <td>
+            {space && self ? <AblyPoweredInput
+                  key="v3"
+                  name="v3"
+                  space={space}
+                  self={self}
+                />: ""}
+          </td>
+          <td className={styles.readinginput}>
+            {space && self ? <AblyPoweredInput
+                  key="m3"
+                  name="m3"
+                  space={space}
+                  self={self}
+                />: ""}
+          </td>
+
         </tr>
     </tbody>
 </table>
