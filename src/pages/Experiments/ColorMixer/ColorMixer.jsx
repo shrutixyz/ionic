@@ -22,6 +22,7 @@ import i from "../../../images/i.svg";
 import x from "../../../images/x.svg";
 import board from "../../../images/board1.svg";
 import InfoSheet from "../../../components/InfoSheet/InfoSheet";
+import { useLiveValue } from "../../../hooks/useLiveValue2";
 
 /** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
 const mockName = () => mockNames[Math.floor(Math.random() * mockNames.length)];
@@ -48,8 +49,14 @@ const ColorMixer = () => {
     space?.enter({ name, userColors });
   }, [space]);
 
+  
   const { self, otherMembers } = useSpaceMembers(space);
-
+  const [value, setValue] = useLiveValue("name", self);
+  
+  useEffect(()=>{
+    if(!value) return;
+    setbg(value);
+  }, [value])
   const liveCursors = useRef(null);
 
   async function dropClr(clr, id) {
@@ -84,7 +91,8 @@ const ColorMixer = () => {
     setG(green);
     setB(blue);
     // el.style.backgroundColor="blue"
-    setbg(`rgb(${red}, ${green}, ${blue})`);
+    setValue(`rgb(${red}, ${green}, ${blue})`);
+    setbg(value);
     showDropper(id);
     // el.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
   }
@@ -102,6 +110,7 @@ const ColorMixer = () => {
     setR(0);
     setG(0);
     setB(0);
+    setValue("transparent");
   }
   return (
     <div
