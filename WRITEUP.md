@@ -1,18 +1,20 @@
 ## Ionic: Igniting Collaborative Science Experiments 🧪🔬
 
 ## Inspiration 🌟
-![Rectangle_271](https://i.ibb.co/NpRTt2V/Rectangle-27-1.png)
+![Rectangle_271](https://cdn.discordapp.com/attachments/873911486488121344/1169228315295490158/Rectangle_271.png)
 
 
-![Inspiration Image](insert_link_to_image_here)
+![Group_58](https://github.com/aakzsh/ionic/assets/69726390/50846ee0-3f58-4c3c-bc3f-c245f02f0c05)
+
 
 Science has always been a collaborative endeavor, where ideas are born through shared curiosity and experimentation. The inspiration behind Ionic is to bring the thrill of scientific discovery to the digital realm, fostering collaboration and enabling users to perform experiments together, regardless of physical distance. 🌍🔍
 Ably provides really cool methods to bring collaborative experiences and realtime data, which urged us to utilise the features and create ionic!
 
 ## What It Does 🚀
-![Rectangle_271](https://i.ibb.co/NpRTt2V/Rectangle-27-1.png)
+![Rectangle_271](https://cdn.discordapp.com/attachments/873911486488121344/1169228315295490158/Rectangle_271.png)
 
-![Ionic in Action](insert_link_to_animated_GIF_here)
+![ezgif com-video-to-gif](https://github.com/aakzsh/ionic/assets/69726390/029d2952-98db-4c22-8b74-29f2bbd032b7)
+
 
 Ionic is a groundbreaking app that utilizes the power of the Ably SDKs to allow users to perform real-time, synchronized science experiments. From conducting chemistry experiments to exploring physics phenomena, users can seamlessly collaborate with their peers in a virtual lab environment. Ionic empowers scientists, educators, and students to connect, experiment, and learn together like never before. 📊👩‍🔬
 The app is focused for growing kids at this moment, with the experiments being of beginner level. 
@@ -20,9 +22,10 @@ The app is focused for growing kids at this moment, with the experiments being o
 We wanted to check out if creating a learning experience like this would be possible, and we're happy that the end results look pretty good! The budding students can join the rooms and then start doing the practicals. They'll be able to read through the documentation to understand the aim of the experiment, and also how to achieve it. Different experiments utilises different features of Ably, based on the context of that specific experiment. The students can also chat with each other and discuss upon the requirements of the experiment and their learning bits. This gamifed version of learning is definitely a boost for kids to learn better and in a much enjoyable manner!
 
 ## How We Built It 🛠️
-![Rectangle_271](https://i.ibb.co/NpRTt2V/Rectangle-27-1.png)
+![Rectangle_271](https://cdn.discordapp.com/attachments/873911486488121344/1169228315295490158/Rectangle_271.png)
 
-![Development Workflow Flowchart](insert_link_to_flowchart_here)
+![Group_62](https://github.com/aakzsh/ionic/assets/69726390/e336c590-36af-4881-80fd-89c7e5c1f8a5)
+Flow
 
 **Ionic was crafted using the following major technologies:**
 - **React.js**: We used react for creating our web application.
@@ -41,7 +44,7 @@ A detailed description of what feature is used where is given below:
 - **User Experience**: The assets used are mostly created in Figma, and so is the overall design. The flow of the application is kept simple and understandable. The UI styles are achieved using CSS, and the markup and logic is done using Javascript.
   
 ## Challenges We Ran Into ⚔️
-![Rectangle_271](https://i.ibb.co/NpRTt2V/Rectangle-27-1.png)
+![Rectangle_271](https://cdn.discordapp.com/attachments/873911486488121344/1169228315295490158/Rectangle_271.png)
 
 Overcoming challenges is part of any journey. And surely, we also faced a bunch of challenges throughout the development of our application. Some of them includes:
 - **Integrating multiple features together**: At some points, we wanted to include both locking feature and the live cursor feature into our application. So, we spent quite a while to figure it out and see if it's achievable.
@@ -51,7 +54,7 @@ Overcoming challenges is part of any journey. And surely, we also faced a bunch 
 Through collaboration and perseverance, we conquered these challenges and emerged stronger. 🏆💪
 
 ## Accomplishments That We're Proud Of 🎉
-![Rectangle_271](https://i.ibb.co/NpRTt2V/Rectangle-27-1.png)
+![Rectangle_271](https://cdn.discordapp.com/attachments/873911486488121344/1169228315295490158/Rectangle_271.png)
 
 We're thrilled to have achieved several remarkable goals with Ionic:
 - **First time creating such an app**: This is the first time we've created any application that involves socket connections and realtime collaborations, so thanks to Ably for that! And quite obviously, this was our first time using Ably SDKs as well. The wrappers on top of web sockets have been really helpful in bringing the app to work.
@@ -62,16 +65,12 @@ We're thrilled to have achieved several remarkable goals with Ionic:
 These accomplishments drive us to continue improving and expanding the app's capabilities. 🌍📈
 
 ## What We Learned 📚
-![Rectangle_271](https://i.ibb.co/NpRTt2V/Rectangle-27-1.png)
-
-![Knowledge Gain](insert_link_to_knowledge_gain_image_here)
+![Rectangle_271](https://cdn.discordapp.com/attachments/873911486488121344/1169228315295490158/Rectangle_271.png)
 
 Developing Ionic has been a journey of continuous learning. We've gained valuable insights into real-time synchronization, web sockets, collaborative app development, about Ably and its capabilites and user engagement strategies. Our journey has further fueled our passion for making science accessible to all, and making it fun. 🤓🚀
 
 ## What's Next for Ionic 🚧
-![Rectangle_271](https://i.ibb.co/NpRTt2V/Rectangle-27-1.png)
-
-![Roadmap](insert_link_to_roadmap_image_here)
+![Rectangle_271](https://cdn.discordapp.com/attachments/873911486488121344/1169228315295490158/Rectangle_271.png)
 
 We actually have a bunch of planned expansions for Ionic. They include:
 - **Expanding the experiment library**: Adding more diverse and exciting experiments.
