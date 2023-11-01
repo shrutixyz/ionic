@@ -67,7 +67,7 @@ const InputCell = ({
           onChange={handleChange}
           onFocus={onFocus}
           disabled={readOnly}
-          placeholder="Click to lock and edit me"
+          placeholder="Click to lock and guess the element"
           style={{
             padding: '0.5rem',
             fontSize: '1rem',
