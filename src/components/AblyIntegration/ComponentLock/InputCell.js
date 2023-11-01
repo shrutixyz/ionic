@@ -26,7 +26,7 @@ const InputCell = ({
     (e) => {
       onChange(e.target.value);
 
-      if(e.target.value.toLowerCase() == name.toLowerCase()){
+      if(e.target.value && e.target.value.toLowerCase() == name.toLowerCase()){
         setcorrect(true)
       }
 
