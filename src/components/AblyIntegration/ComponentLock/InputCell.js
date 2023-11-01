@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import cn from "classnames";
 import { useOnClickOutside } from "usehooks-ts";
 // import { getCellStylesForMember } from "../../";
@@ -17,14 +17,20 @@ const InputCell = ({
 }) => {
   const ref = useRef(null);
 
-  console.log(lockHolder, lockedByYou)
   // 💡 Get the member color and name for the cell from the `cellMembers` prop. 💡
   const memberColor = lockHolder?.profileData.userColors.cursorColor;
   const memberName = lockedByYou ? "You" : lockHolder?.profileData.name;
+  const [correct, setcorrect] = useState(false);
 
   const handleChange = useCallback(
     (e) => {
       onChange(e.target.value);
+
+      if(e.target.value.toLowerCase() == name.toLowerCase()){
+        setcorrect(true)
+      }
+
+
     },
     [onChange],
   );
@@ -48,7 +54,7 @@ const InputCell = ({
         
         style={{ "--member-bg-color": memberColor, position: "relative" }}
       >
-        {memberName ? (
+        {memberName && memberColor ? (
           <div className={styles.memberNameLock}>
             {memberName}
             {!lockedByYou && <LockFilledSvg className="text-base" />}
@@ -67,7 +73,9 @@ const InputCell = ({
             fontSize: '1rem',
             borderRadius: '0.5rem',
             outline: "none",
-            transition: "background-color 0.2s ease-in-out"
+            transition: "background-color 0.2s ease-in-out",
+            borderColor: correct ?  "green" : "",
+            borderWidth: "3px"
           }}
           className={cn(
             `p-2 w-full h-10 text-sm rounded-lg outline-none transition-colors hover:bg-white focus:bg-white`,

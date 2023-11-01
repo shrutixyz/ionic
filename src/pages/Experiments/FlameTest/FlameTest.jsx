@@ -148,9 +148,9 @@ const FlameTest = () => {
             <div className={styles.tableitems}>
               <div className="ably-input">
                {space && self ? <AblyPoweredInput
-                  key={sodiumdish}
+                  key="sodiumdish"
                   // label={entry.label}
-                  name={sodiumdish}
+                  name="sodium"
                   space={space}
                   self={self}
                 />: ""}
@@ -174,9 +174,9 @@ const FlameTest = () => {
 
               <div className="ably-input">
                {space && self ? <AblyPoweredInput
-                  key={copperdish}
+                  key="copperdish"
                   // label={entry.label}
-                  name={copperdish}
+                  name="copper"
                   space={space}
                   self={self}
                 />: ""}
@@ -198,9 +198,9 @@ const FlameTest = () => {
               </div>
               <div className="ably-input">
                {space && self ? <AblyPoweredInput
-                  key={nickeldish}
+                  key="nickeldish"
                   // label={entry.label}
-                  name={nickeldish}
+                  name="nickel"
                   space={space}
                   self={self}
                 />: ""}
@@ -222,9 +222,9 @@ const FlameTest = () => {
               </div>
               <div className="ably-input">
                {space && self ? <AblyPoweredInput
-                  key={leaddish}
+                  key="leaddish"
                   // label={entry.label}
-                  name={leaddish}
+                  name="lead"
                   space={space}
                   self={self}
                 />: ""}
