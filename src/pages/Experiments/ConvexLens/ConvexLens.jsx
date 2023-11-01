@@ -13,6 +13,7 @@ import ar from "../../../images/ar.svg";
 import InfoSheet from "../../../components/InfoSheet/InfoSheet";
 
 import board from "../../../images/board3.svg";
+import Chat from "../../../components/AblyIntegration/Chat/Chat";
 
 
 /** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
@@ -111,6 +112,7 @@ const [focalLength, setfocallength] = useState(window.innerWidth * 0.1)
   return (
     <>
       <PerformNav title="Convex Lens Focal Length" self={self} otherMembers={otherMembers}/>
+      {space ? <Chat /> : <div></div>}
       <div className={styles.parent}>
         <div className={styles.experimentbody}>
         <img src={board} alt="" style={{ marginTop: "2rem" }} />

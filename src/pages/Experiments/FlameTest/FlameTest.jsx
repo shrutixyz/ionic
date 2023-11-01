@@ -19,6 +19,7 @@ import i from "../../../images/i.svg";
 import x from "../../../images/x.svg";
 import ar from "../../../images/ar.svg";
 import InfoSheet from "../../../components/InfoSheet/InfoSheet";
+import Chat from "../../../components/AblyIntegration/Chat/Chat";
 
 /** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
 const mockName = () => mockNames[Math.floor(Math.random() * mockNames.length)];
@@ -111,6 +112,7 @@ const FlameTest = () => {
     <div id="component-locking">
       <PerformNav title="Elements Flame Test" self={self} otherMembers={otherMembers} />
       <Form space={space} self={self} />
+      {space ? <Chat /> : <div></div>}
       <div className={styles.parent}>
         <div className={styles.experimentbody}>
           <img src={board} alt="" style={{ marginTop: "2rem" }} />

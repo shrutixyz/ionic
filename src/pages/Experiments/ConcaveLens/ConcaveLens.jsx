@@ -14,6 +14,7 @@ import ar from "../../../images/ar.svg";
 
 
 import board from "../../../images/board4.svg";
+import Chat from '../../../components/AblyIntegration/Chat/Chat';
 /** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
 const mockName = () => mockNames[Math.floor(Math.random() * mockNames.length)];
 
@@ -109,6 +110,7 @@ const ConcaveLens = () => {
   return (
     <>
       <PerformNav title="concave lens practical" self={self} otherMembers={otherMembers}/>
+      {space ? <Chat /> : <div></div>}
       <div className={styles.parent}>
       <div className={styles.experimentbody}>
       <img src={board} alt="" style={{ marginTop: "2rem" }} />
