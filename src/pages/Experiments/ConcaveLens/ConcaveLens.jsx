@@ -114,7 +114,7 @@ const ConcaveLens = () => {
   return (
     <>
       <PerformNav title="concave lens practical" self={self} otherMembers={otherMembers}/>
-      {space ? <Chat /> : <div></div>}
+      {space ? <Chat self={self} /> : <div></div>}
       <div className={styles.parent}>
       <div className={styles.experimentbody}>
       <img src={board} alt="" style={{ marginTop: "0.25rem" }} />

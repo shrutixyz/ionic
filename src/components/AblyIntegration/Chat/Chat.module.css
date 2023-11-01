@@ -91,3 +91,7 @@
     height: 27rem;
     overflow: auto;
 }
+
+.sendBtn:hover {
+    opacity: 0.5;
+}

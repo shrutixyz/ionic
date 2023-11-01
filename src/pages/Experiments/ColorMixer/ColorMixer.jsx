@@ -130,7 +130,7 @@ const ColorMixer = () => {
         space={space}
         selfConnectionId={self?.connectionId}
       />
-      {space ? <Chat /> : <div></div>}
+      {space ? <Chat self={self} /> : <div></div>}
       <div className={styles.parent}>
         <div className={styles.experimentbody}>
           <AR/>

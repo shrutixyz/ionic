@@ -114,7 +114,7 @@ const [focalLength, setfocallength] = useState(window.innerWidth * 0.1)
   return (
     <>
       <PerformNav title="Convex Lens Focal Length" self={self} otherMembers={otherMembers}/>
-      {space ? <Chat /> : <div></div>}
+      {space ? <Chat self={self} /> : <div></div>}
       <div className={styles.parent}>
         <div className={styles.experimentbody}>
         <img src={board} alt="" style={{ marginTop: "2rem" }} />

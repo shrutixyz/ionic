@@ -4,7 +4,7 @@ import send from "../../../images/send.svg";
 import { useChannel } from "ably/react";
 import { useState } from "react";
 
-const Chat = (props) => {
+const Chat = ({self}) => {
     const urlParams = new URLSearchParams(window.location.search);
   const channelname = urlParams.get("space");
   console.log("chat is ", channelname)
@@ -19,14 +19,27 @@ const Chat = (props) => {
   });
 
   const sendChatMessage = (messageText) => {
-    channel.publish({ name: channelname, data: messageText });
+    console.log(self.profileData.name)
+    channel.publish({ name: channelname, data: {data: messageText, userName: self.profileData.name}});
     setMessageText("");
   };
 
+  const pressEnter = (e) => {
+    if(e.key == "Enter"){
+      sendChatMessage(messageText);
+    }
+  }
+
+  console.log(receivedMessages);
+
   const TextIcon = (props) => {
+
     return (
       <>
-        <p className={styles.sendername}>{props.sender}</p>
+        <p style={{
+          margin: '0.5em',
+          marginBottom: '-0.75rem'
+        }} className={styles.senderName}>{props.sender == self.profileData.name ? "You" : props.sender}</p>
         <div className={styles.messagebox}>
           <p className={styles.content}>{props.text}</p>
         </div>
@@ -53,7 +66,7 @@ const Chat = (props) => {
             {
                 receivedMessages.map((el, index)=>{
                     
-                   return  <TextIcon text={el.data} sender={el.connectionId} key={index}/>
+                   return  <TextIcon text={el.data.data} sender={el.data.userName} key={index}/>
                 })
 
             }
@@ -65,6 +78,7 @@ const Chat = (props) => {
             className={styles.sendinput}
             onChange={(evt)=>setMessageText(evt.target.value)}
             value={messageText}
+            onKeyDown={(e)=>pressEnter(e)}
           />
           <div
             className={styles.send}
@@ -72,7 +86,7 @@ const Chat = (props) => {
               sendChatMessage(messageText)
             }}
           >
-            <img src={send} alt="" />
+            <img className={styles.sendBtn} src={send} alt="" />
           </div>
         </div>
       </div>
