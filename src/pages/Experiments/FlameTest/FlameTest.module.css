@@ -3,10 +3,11 @@
     width: 85vw;
     background-color: #D9D9D9;
     color: black;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 }
 
 .parent{
@@ -197,3 +198,46 @@
     z-index: 2;
     padding: 2rem;
 } */
+
+
+
+.table{
+    background-color: #453128;
+    height: 5rem;
+    width: 75vw;
+}
+
+.tableitems{
+    display: flex;
+    align-items: flex-end;
+    gap: 2rem;
+}
+
+
+.elementparent{
+    margin-bottom: -2rem;
+}
+.elementdish{
+    width: 12rem;
+}
+
+.ar{
+    position: absolute;
+    right: 10vw;
+    bottom: 10vh;
+    width: 4rem
+}
+
+.i{
+    position: absolute;
+    right: 10vw;
+    bottom: 20vh;
+    width: 2rem
+}
+
+.x{
+    position: absolute;
+    top: 15vh;
+    right: 10vw;
+    z-index: 4;
+}

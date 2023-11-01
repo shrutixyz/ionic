@@ -6,8 +6,14 @@ import { mockNames } from "../../../utils/mockNames"
 import { SpacesContext } from "../../../components/AblyIntegration/SpaceContext";
 import useSpaceMembers from "../../../hooks/useMembers";
 import { colours } from "../../../utils/helper";
+import InfoSheet from '../../../components/InfoSheet/InfoSheet';
+
+import i from "../../../images/i.svg";
+import x from "../../../images/x.svg";
+import ar from "../../../images/ar.svg";
 
 
+import board from "../../../images/board4.svg";
 /** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
 const mockName = () => mockNames[Math.floor(Math.random() * mockNames.length)];
 
@@ -25,6 +31,9 @@ const ConcaveLens = () => {
     [],
   );
 
+  const [magnification, setmagnification] = useState(null)
+
+  const [isInfoOpen, setInfoOpen] = useState(false);
   /** 💡 Get a handle on a space instance 💡 */
   const space = useContext(SpacesContext);
 
@@ -102,6 +111,73 @@ const ConcaveLens = () => {
       <PerformNav title="concave lens practical" self={self} otherMembers={otherMembers}/>
       <div className={styles.parent}>
       <div className={styles.experimentbody}>
+      <img src={board} alt="" style={{ marginTop: "2rem" }} />
+        <table className={styles.datatable}>
+    <thead>
+        <tr>
+            <th>Object Distance (u)</th>
+            <th>Image Distance (v)</th>
+            <th>Magnification (m)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input type="number" className={styles.readinginput} name="u1" /></td>
+            <td><input type="number" className={styles.readinginput} name="v1" /></td>
+            <td><input type="number" className={styles.readinginput} name="m1" /></td>
+        </tr>
+        <tr>
+            <td><input type="number" className={styles.readinginput} name="u2" /></td>
+            <td><input type="number" className={styles.readinginput} name="v2" /></td>
+            <td><input type="number" className={styles.readinginput} name="m2" /></td>
+        </tr>
+        <tr>
+            <td><input type="number" className={styles.readinginput} name="u3" /></td>
+            <td><input type="number" className={styles.readinginput} name="v3" /></td>
+            <td><input type="number" className={styles.readinginput} name="m3" /></td>
+        </tr>
+    </tbody>
+</table>
+
+<img
+            src={i}
+            onClick={() => {
+              setInfoOpen(true);
+            }}
+            className={styles.i}
+            alt=""
+          />
+
+          <img src={ar} className={styles.ar} alt="" />
+          {isInfoOpen ? (
+            <div
+              onClick={() => {
+                setInfoOpen(false);
+              }}
+            >
+              <img src={x} className={styles.x} alt="" />
+            </div>
+          ) : (
+            <div></div>
+          )}
+          {isInfoOpen ? <InfoSheet index={0} /> : <div></div>}
+
+          <div className={styles.setinput}>
+            <div>
+              <p>Magnification: {Math.round(magnification * 100) / 100
+}</p>
+            </div>
+            {/* <div>
+              <input type="text" placeholder="Set focal length manually" onChange={(evt)=>{setinpfoc( window.innerWidth * 0.01 * evt.target.value)}}  className={styles.inputbox}/>
+              <button className={styles.setbtn} onClick={()=>{
+                setfocallength(inpfoc)
+                console.log(inpfoc)
+                console.log(focalLength)
+              }}>Set</button>
+            </div> */}
+          </div>
+
+
       <div className={styles.container} onMouseUp={(e) => mouseUp(e)} onMouseMove={(e)=> mouseMove(e)}>
       <div id='center-line' className={styles.centerline}></div>
       <img src={Concavelens} className={styles.lens} alt="" />
@@ -109,6 +185,14 @@ const ConcaveLens = () => {
       <div id="screen" className={styles.screen}>
       </div>
     </div>
+    <div className={styles.table}>
+            {
+           [...Array(21)].map((_, i) => {
+                return <div className={styles.mark}><p>|</p><br />{5*(i-10)}</div>
+              })
+            }
+            
+       </div>
       </div>
       </div>
           </>

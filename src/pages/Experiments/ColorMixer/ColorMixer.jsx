@@ -142,7 +142,7 @@ const ColorMixer = () => {
             Reset
           </button>
           <div style={{ height: "5rem" }}></div>
-
+ 
           <div className={styles.bench}>
             <div className={styles.tableitems}>
               <div className={styles.indidropper}>

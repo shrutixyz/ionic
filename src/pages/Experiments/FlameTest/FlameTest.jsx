@@ -2,15 +2,23 @@ import PerformNav from "../../../components/PerformNav/PerformNav";
 import styles from "./FlameTest.module.css";
 import "./FlameTest.css";
 import spatula from "../../../images/spatula.svg";
+import board from "../../../images/board2.svg";
 import flamestand from "../../../images/burnerstand.svg";
 import petridish from "../../../images/petridish.svg";
 import { useEffect, useState, useMemo, useContext } from "react";
-import { mockNames } from "../../../utils/mockNames"
+import { mockNames } from "../../../utils/mockNames";
 import { SpacesContext } from "../../../components/AblyIntegration/SpaceContext";
 import useSpaceMembers from "../../../hooks/useMembers";
 import { colours } from "../../../utils/helper";
 import Form from "../../../components/AblyIntegration/ComponentLock/Form";
-
+import copperdish from "../../../images/copperdish.svg";
+import nickeldish from "../../../images/nickeldish.svg";
+import leaddish from "../../../images/leaddish.svg";
+import sodiumdish from "../../../images/sodiumdish.svg";
+import i from "../../../images/i.svg";
+import x from "../../../images/x.svg";
+import ar from "../../../images/ar.svg";
+import InfoSheet from "../../../components/InfoSheet/InfoSheet";
 
 /** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
 const mockName = () => mockNames[Math.floor(Math.random() * mockNames.length)];
@@ -23,11 +31,12 @@ const FlameTest = () => {
     lead: ["blue", "cyan", "lightblue", "white"],
   };
 
+  const [isInfoOpen, setInfoOpen] = useState(false);
   const name = useMemo(mockName, []);
   /** 💡 Select a color to assign randomly to a new user that enters the space💡 */
   const userColors = useMemo(
     () => colours[Math.floor(Math.random() * colours.length)],
-    [],
+    []
   );
 
   /** 💡 Get a handle on a space instance 💡 */
@@ -71,7 +80,7 @@ const FlameTest = () => {
         var dragX = e.pageX,
           dragY = e.pageY;
         if (
-          Math.abs((dragX-50) - document.getElementById("flame").offsetLeft)  <
+          Math.abs(dragX - 50 - document.getElementById("flame").offsetLeft) <
             50 &&
           Math.abs(dragY - document.getElementById("flame").offsetTop) < 200
         ) {
@@ -100,127 +109,107 @@ const FlameTest = () => {
   }, [current]);
   return (
     <div id="component-locking">
-      <PerformNav title="Flame Test" self={self} otherMembers={otherMembers}/>
-      <Form space={space} self={self}/>
+      <PerformNav title="Elements Flame Test" self={self} otherMembers={otherMembers} />
+      <Form space={space} self={self} />
       <div className={styles.parent}>
         <div className={styles.experimentbody}>
-          <center>
-            <h2>
-              Drag the elements from the ashtray and put them above the glowing
-              flame to see the color changing!
-            </h2>
-            <div className="container" id="flame">
-              <div className="red flame" id="red"></div>
-              <div className="orange flame" id="orange"></div>
-              <div className="yellow flame" id="yellow"></div>
-              <div className="white flame" id="white"></div>
+          <img src={board} alt="" style={{ marginTop: "2rem" }} />
+          <img
+            src={i}
+            onClick={() => {
+              setInfoOpen(true);
+            }}
+            className={styles.i}
+            alt=""
+          />
 
+          <img src={ar} className={styles.ar} alt="" />
+          {isInfoOpen ? (
+            <div
+              onClick={() => {
+                setInfoOpen(false);
+              }}
+            >
+              <img src={x} className={styles.x} alt="" />
             </div>
-            <img src={flamestand} className={styles.burner} alt="" />
-            <br />
-          </center>
-
-          <div className={styles.droppers}>
-            <div className={styles.dropper}>
-              <div className={styles.dish}>
-                <div
-                  className={styles.spatulaparent}
-                  draggable
-                  onDragStart={() => {
-                    setCurrent("sodium");
-                    hideSpatula("1");
-                  }}
-                  onDragEnd={() => {
-                    resetColors();
-                    showSpatula("1");
-                  }}
-                  id="1"
-                >
-                  <div
-                    className={styles.crystal}
-                    style={{ backgroundColor: "#F5BFBF" }}
-                  ></div>
-                  <img src={spatula} className={styles.spatula} alt="" />
-                </div>
-                <img src={petridish} className={styles.petridish} alt="" />
+          ) : (
+            <div></div>
+          )}
+          {isInfoOpen ? <InfoSheet index={0} /> : <div></div>}
+          <br />
+          <div className={styles.bench}>
+            <div className={styles.tableitems}>
+              <div
+                className={styles.elementparent}
+                draggable
+                onDragStart={() => {
+                  setCurrent("sodium");
+                  hideSpatula("1");
+                }}
+                onDragEnd={() => {
+                  resetColors();
+                  showSpatula("1");
+                }}
+                id="1"
+              >
+                <img src={sodiumdish} className={styles.elementdish} alt="" />
               </div>
-              <p>Sodium</p>
-            </div>
-            <div className={styles.dropper}>
-              <div className={styles.dish}>
-                <div
-                  className={styles.spatulaparent}
-                  draggable
-                  onDragStart={() => {
-                    hideSpatula("2");
-                    setCurrent("copper");
-                  }}
-                  onDragEnd={() => {
-                    resetColors();
-                    showSpatula("2");
-                  }}
-                  id="2"
-                >
-                  <div
-                    className={styles.crystal}
-                    style={{ backgroundColor: "#2E0DFF" }}
-                  ></div>
-                  <img src={spatula} className={styles.spatula} alt="" />
-                </div>
-                <img src={petridish} className={styles.petridish} alt="" />
+              <div
+                className={styles.elementparent}
+                draggable
+                onDragStart={() => {
+                  hideSpatula("2");
+                  setCurrent("copper");
+                }}
+                onDragEnd={() => {
+                  resetColors();
+                  showSpatula("2");
+                }}
+                id="2"
+              >
+                <img src={copperdish} className={styles.elementdish} alt="" />
               </div>
-              <p>Copper</p>
-            </div>
-            <div className={styles.dropper}>
-              <div className={styles.dish}>
-                <div
-                  className={styles.spatulaparent}
-                  draggable
-                  onDragStart={() => {
-                    setCurrent("nickel");
-                    hideSpatula("3");
-                  }}
-                  onDragEnd={() => {
-                    resetColors();
-                    showSpatula("3");
-                  }}
-                  id="3"
-                >
-                  <div
-                    className={styles.crystal}
-                    style={{ backgroundColor: "#5BFFCE" }}
-                  ></div>
-                  <img src={spatula} className={styles.spatula} alt="" />
-                </div>
-                <img src={petridish} className={styles.petridish} alt="" />
+              <div
+                className={styles.elementparent}
+                draggable
+                onDragStart={() => {
+                  setCurrent("nickel");
+                  hideSpatula("3");
+                }}
+                onDragEnd={() => {
+                  resetColors();
+                  showSpatula("3");
+                }}
+                id="3"
+              >
+                <img src={nickeldish} className={styles.elementdish} alt="" />
               </div>
-              <p>Nickel</p>
-            </div>
-            <div className={styles.dropper}>
-              <div className={styles.dish}>
-                <div
-                  className={styles.spatulaparent}
-                  draggable
-                  onDragStart={() => {
-                    setCurrent("lead");
-                    hideSpatula("4");
-                  }}
-                  onDragEnd={() => {
-                    resetColors();
-                    showSpatula("4");
-                  }}
-                  id="4"
-                >
-                  <div
-                    className={styles.crystal}
-                    style={{ backgroundColor: "#8A8A8A" }}
-                  ></div>
-                  <img src={spatula} className={styles.spatula} alt="" />
-                </div>
-                <img src={petridish} className={styles.petridish} alt="" />
+              <div
+                className={styles.elementparent}
+                draggable
+                onDragStart={() => {
+                  setCurrent("lead");
+                  hideSpatula("4");
+                }}
+                onDragEnd={() => {
+                  resetColors();
+                  showSpatula("4");
+                }}
+                id="4"
+              >
+                <img src={leaddish} className={styles.elementdish} alt="" />
               </div>
-              <p>Lead</p>
+              <div>
+                <div className="container" id="flame">
+                  <div className="red flame" id="red"></div>
+                  <div className="orange flame" id="orange"></div>
+                  <div className="yellow flame" id="yellow"></div>
+                  <div className="white flame" id="white"></div>
+                </div>
+                <img src={flamestand} className={styles.burner} alt="" />
+              </div>
             </div>
+            <div className={styles.table}></div>
           </div>
         </div>
       </div>
