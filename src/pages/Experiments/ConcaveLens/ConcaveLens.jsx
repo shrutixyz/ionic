@@ -16,6 +16,7 @@ import ar from "../../../images/ar.svg";
 import board from "../../../images/board4.svg";
 import Chat from '../../../components/AblyIntegration/Chat/Chat';
 import {AblyPoweredInput} from '../../../components/AblyIntegration/ComponentLock/AblyPoweredInput';
+import AR from '../../../components/AR/AR';
 
 
 /** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
@@ -220,7 +221,7 @@ const ConcaveLens = () => {
             alt=""
           />
 
-          <img src={ar} className={styles.ar} alt="" />
+          <AR/>
           {isInfoOpen ? (
             <div
               onClick={() => {

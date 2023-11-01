@@ -21,6 +21,7 @@ import ar from "../../../images/ar.svg";
 import InfoSheet from "../../../components/InfoSheet/InfoSheet";
 import Chat from "../../../components/AblyIntegration/Chat/Chat";
 import { AblyPoweredInput } from "../../../components/AblyIntegration/ComponentLock/AblyPoweredInput";
+import AR from "../../../components/AR/AR";
 
 /** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
 const mockName = () => mockNames[Math.floor(Math.random() * mockNames.length)];
@@ -130,7 +131,7 @@ const FlameTest = () => {
             alt=""
           />
 
-          <img src={ar} className={styles.ar} alt="" />
+          <AR/>
           {isInfoOpen ? (
             <div
               onClick={() => {

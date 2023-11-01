@@ -23,6 +23,7 @@ import x from "../../../images/x.svg";
 import board from "../../../images/board1.svg";
 import InfoSheet from "../../../components/InfoSheet/InfoSheet";
 import { useLiveValue } from "../../../hooks/useLiveValue2";
+import AR from "../../../components/AR/AR";
 
 /** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
 const mockName = () => mockNames[Math.floor(Math.random() * mockNames.length)];
@@ -132,7 +133,7 @@ const ColorMixer = () => {
       {space ? <Chat /> : <div></div>}
       <div className={styles.parent}>
         <div className={styles.experimentbody}>
-          <img src={ar} className={styles.ar} alt="" />
+          <AR/>
           <img src={i} onClick={()=>{setInfoOpen(true)}} className={styles.i} alt="" />
 
           <img src={board} alt="" style={{ marginTop: "2rem" }} />
