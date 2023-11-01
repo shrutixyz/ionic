@@ -20,6 +20,7 @@ import x from "../../../images/x.svg";
 import ar from "../../../images/ar.svg";
 import InfoSheet from "../../../components/InfoSheet/InfoSheet";
 import Chat from "../../../components/AblyIntegration/Chat/Chat";
+import { AblyPoweredInput } from "../../../components/AblyIntegration/ComponentLock/AblyPoweredInput";
 
 /** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
 const mockName = () => mockNames[Math.floor(Math.random() * mockNames.length)];
@@ -110,8 +111,12 @@ const FlameTest = () => {
   }, [current]);
   return (
     <div id="component-locking">
-      <PerformNav title="Elements Flame Test" self={self} otherMembers={otherMembers} />
-      <Form space={space} self={self} />
+      <PerformNav
+        title="Elements Flame Test"
+        self={self}
+        otherMembers={otherMembers}
+      />
+      {/* <Form space={space} self={self} /> */}
       {space ? <Chat /> : <div></div>}
       <div className={styles.parent}>
         <div className={styles.experimentbody}>
@@ -141,65 +146,104 @@ const FlameTest = () => {
           <br />
           <div className={styles.bench}>
             <div className={styles.tableitems}>
-              <div
-                className={styles.elementparent}
-                draggable
-                onDragStart={() => {
-                  setCurrent("sodium");
-                  hideSpatula("1");
-                }}
-                onDragEnd={() => {
-                  resetColors();
-                  showSpatula("1");
-                }}
-                id="1"
-              >
-                <img src={sodiumdish} className={styles.elementdish} alt="" />
+              <div className="ably-input">
+               {space && self ? <AblyPoweredInput
+                  key={sodiumdish}
+                  // label={entry.label}
+                  name={sodiumdish}
+                  space={space}
+                  self={self}
+                />: ""}
+
+                <div
+                  className={styles.elementparent}
+                  draggable
+                  onDragStart={() => {
+                    setCurrent("sodium");
+                    hideSpatula("1");
+                  }}
+                  onDragEnd={() => {
+                    resetColors();
+                    showSpatula("1");
+                  }}
+                  id="1"
+                >
+                  <img src={sodiumdish} className={styles.elementdish} alt="" />
+                </div>
               </div>
-              <div
-                className={styles.elementparent}
-                draggable
-                onDragStart={() => {
-                  hideSpatula("2");
-                  setCurrent("copper");
-                }}
-                onDragEnd={() => {
-                  resetColors();
-                  showSpatula("2");
-                }}
-                id="2"
-              >
-                <img src={copperdish} className={styles.elementdish} alt="" />
+
+              <div className="ably-input">
+               {space && self ? <AblyPoweredInput
+                  key={copperdish}
+                  // label={entry.label}
+                  name={copperdish}
+                  space={space}
+                  self={self}
+                />: ""}
+                <div
+                  className={styles.elementparent}
+                  draggable
+                  onDragStart={() => {
+                    hideSpatula("2");
+                    setCurrent("copper");
+                  }}
+                  onDragEnd={() => {
+                    resetColors();
+                    showSpatula("2");
+                  }}
+                  id="2"
+                >
+                  <img src={copperdish} className={styles.elementdish} alt="" />
+                </div>
               </div>
-              <div
-                className={styles.elementparent}
-                draggable
-                onDragStart={() => {
-                  setCurrent("nickel");
-                  hideSpatula("3");
-                }}
-                onDragEnd={() => {
-                  resetColors();
-                  showSpatula("3");
-                }}
-                id="3"
-              >
-                <img src={nickeldish} className={styles.elementdish} alt="" />
+              <div className="ably-input">
+               {space && self ? <AblyPoweredInput
+                  key={nickeldish}
+                  // label={entry.label}
+                  name={nickeldish}
+                  space={space}
+                  self={self}
+                />: ""}
+                <div
+                  className={styles.elementparent}
+                  draggable
+                  onDragStart={() => {
+                    setCurrent("nickel");
+                    hideSpatula("3");
+                  }}
+                  onDragEnd={() => {
+                    resetColors();
+                    showSpatula("3");
+                  }}
+                  id="3"
+                >
+                  <img src={nickeldish} className={styles.elementdish} alt="" />
+                </div>
               </div>
-              <div
-                className={styles.elementparent}
-                draggable
-                onDragStart={() => {
-                  setCurrent("lead");
-                  hideSpatula("4");
-                }}
-                onDragEnd={() => {
-                  resetColors();
-                  showSpatula("4");
-                }}
-                id="4"
-              >
-                <img src={leaddish} className={styles.elementdish} alt="" />
+              <div className="ably-input">
+               {space && self ? <AblyPoweredInput
+                  key={leaddish}
+                  // label={entry.label}
+                  name={leaddish}
+                  space={space}
+                  self={self}
+                />: ""}
+
+                <div
+                  className={styles.elementparent}
+                  draggable
+                  onDragStart={() => {
+                    setCurrent("lead");
+                    hideSpatula("4");
+                  }}
+                  onDragEnd={() => {
+                    resetColors();
+                    showSpatula("4");
+                  }}
+                  id="4"
+                >
+                  <img src={leaddish} className={styles.elementdish} alt="" />
+                </div>
               </div>
               <div>
                 <div className="container" id="flame">

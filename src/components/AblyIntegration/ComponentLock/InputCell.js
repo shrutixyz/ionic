@@ -3,10 +3,11 @@ import cn from "classnames";
 import { useOnClickOutside } from "usehooks-ts";
 // import { getCellStylesForMember } from "../../";
 import { LockFilledSvg } from "./LockedFilled";
+import styles from './InputCell.module.css';
 
 const InputCell = ({
   value,
-  label,
+  // label,
   name,
   onFocus,
   onClickOutside,
@@ -18,8 +19,8 @@ const InputCell = ({
 
   console.log(lockHolder, lockedByYou)
   // 💡 Get the member color and name for the cell from the `cellMembers` prop. 💡
-  const memberColor = lockHolder?.profileData.memberColor;
-  const memberName = lockedByYou ? "You" : lockHolder?.profileData.memberName;
+  const memberColor = lockHolder?.profileData.userColors.cursorColor;
+  const memberName = lockedByYou ? "You" : lockHolder?.profileData.name;
 
   const handleChange = useCallback(
     (e) => {
@@ -35,16 +36,20 @@ const InputCell = ({
   const readOnly = Boolean(lockHolder && !lockedByYou);
 
   return (
-    <div ref={ref} className="flex flex-col mb-4 w-full">
-      <label htmlFor={name} className="mb-2 text-sm">
+    <div ref={ref} style={{
+      display: "flex",
+      flexDirection: 'column',
+
+    }}>
+      {/* <label htmlFor={name} className="mb-2 text-sm">
         {label}
-      </label>
+      </label> */}
       <div
-        className="relative"
-        style={{ "--member-bg-color": memberColor }}
+        
+        style={{ "--member-bg-color": memberColor, position: "relative" }}
       >
         {memberName ? (
-          <div className="member-name-lock">
+          <div className={styles.memberNameLock}>
             {memberName}
             {!lockedByYou && <LockFilledSvg className="text-base" />}
           </div>
@@ -57,6 +62,13 @@ const InputCell = ({
           onFocus={onFocus}
           disabled={readOnly}
           placeholder="Click to lock and edit me"
+          style={{
+            padding: '0.5rem',
+            fontSize: '1rem',
+            borderRadius: '0.5rem',
+            outline: "none",
+            transition: "background-color 0.2s ease-in-out"
+          }}
           className={cn(
             `p-2 w-full h-10 text-sm rounded-lg outline-none transition-colors hover:bg-white focus:bg-white`,
             {

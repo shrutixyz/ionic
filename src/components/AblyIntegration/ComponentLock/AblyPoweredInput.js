@@ -123,7 +123,7 @@ export const AblyPoweredInput = ({
     <>
     <InputCell
       value={value}
-      label={label}
+      // label={label}
       name={name}
       onFocus={handleFocus}
       onClickOutside={handleClickOutside}
@@ -131,8 +131,6 @@ export const AblyPoweredInput = ({
       lockedByYou={lockedByYou}
       lockHolder={lockHolder}
     />
-    <p>{lockedByYou}</p>
-    <p>{lockHolder?.profileData.name}</p>
     </>
   );
 };
