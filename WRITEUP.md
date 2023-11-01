@@ -28,6 +28,7 @@ We wanted to check out if creating a learning experience like this would be poss
 - **React.js**: We used react for creating our web application.
 - **Ably SDKs**: SDKs provided by Ably are being utilised for almost every functionality, including live cursors, input fields locking, live avatars and live chats.
 - **Figma**: For creating the User Interface prior the development phase of ionic.
+- **Netlify**: For hosting our application live.
 
 Our development process was a harmonious blend of creativity, innovation, and teamwork. The real-time aspect was achieved by leveraging the Ably APIs, enabling users to witness and contribute to each other's experiments in real time. 💡👨‍💻
 
@@ -36,6 +37,7 @@ A detailed description of what feature is used where is given below:
 - **Live Avatars**: We show avatars of all the members inside a common room performing experiments. This is crucial to let everyone know who and how many people are there. This is achieved by Ably Spaces.
 - **Live Cursors**: Live cursors are available on our "Experiment 1: Exploring Colour Theroy" since we want the members to know the position of the cursor of other users performing the experiment. This is achieved using cursor methods inside Ably Spaces itself!
 - **Component Locking**: This feature is present in three experiments: "Experiment 2: Elements Flame Test", "Experiment 3: Convex Lens" and "Experiment 4: Concave Lens", because these experiments requires the users to put input maybe in form of answers as in Experiment 2 or experiment readings as in Experiment 3 and 4. This is achieved using Component Locking methods from Ably Spaces.
+- **Pub/Sub Channel**: It is used in "Experiment 1: Exploring Colour Theroy" where we're trying to show the common colour that is created by all the users.
 - **User Experience**: The assets used are mostly created in Figma, and so is the overall design. The flow of the application is kept simple and understandable. The UI styles are achieved using CSS, and the markup and logic is done using Javascript.
   
 ## Challenges We Ran Into ⚔️
