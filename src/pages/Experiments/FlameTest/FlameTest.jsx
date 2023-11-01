@@ -143,7 +143,7 @@ const FlameTest = () => {
           ) : (
             <div></div>
           )}
-          {isInfoOpen ? <InfoSheet index={0} /> : <div></div>}
+          {isInfoOpen ? <InfoSheet index={1} /> : <div></div>}
           <br />
           <div className={styles.bench}>
             <div className={styles.tableitems}>

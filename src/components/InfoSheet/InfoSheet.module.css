@@ -10,13 +10,33 @@
     color: white;
 }
 
-.p{
-    margin-left: 2rem;
-    margin-right: 2rem;
-    margin-top: 1rem;
-}
 
 .title{
     margin-left: 2rem;
     margin-right: 2rem;
+}
+
+.sheetchild{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+
+.oneeg{
+    display: flex;
+    gap: 2rem;
+}
+
+.circle{
+    height: 5rem;
+    width: 5rem;
+}
+
+.p{
+    opacity: 0.9;
+}
+
+
+.sheetparent{
+    overflow: auto;
 }

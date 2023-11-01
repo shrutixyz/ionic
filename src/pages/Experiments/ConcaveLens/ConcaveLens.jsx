@@ -93,6 +93,7 @@ const ConcaveLens = () => {
       let v = ((u * f) / (f - u)) * (-1);
       let magnification = (v/u * (-1));
 
+      setmagnification(magnification)
       let imageDistance = halfWidthOfLine + v - 64;
       if(imageDistance > (window.innerWidth - 160)){
         console.log("image at infinity", u, f)
@@ -233,7 +234,7 @@ const ConcaveLens = () => {
           ) : (
             <div></div>
           )}
-          {isInfoOpen ? <InfoSheet index={0} /> : <div></div>}
+          {isInfoOpen ? <InfoSheet index={3} /> : <div></div>}
 
           <div className={styles.setinput}>
             <div>

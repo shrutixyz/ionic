@@ -21,9 +21,11 @@ import AR from "../../../components/AR/AR";
 /** 💡 Select a mock name to assign randomly to a new user that enters the space💡 */
 const mockName = () => mockNames[Math.floor(Math.random() * mockNames.length)];
 
+
 const ConvexLens = () => {
   const [down, setDown] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [atInfinity, setInfinity] = useState(false)
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [isInitialSetupDone, setisInitialSetupDone] = useState(false);
 
@@ -88,7 +90,14 @@ const [focalLength, setfocallength] = useState(window.innerWidth * 0.1)
         let halfWidthOfLine = window.innerWidth * 0.5;
         let u =
           halfWidthOfLine - 25 - document.getElementById("object").offsetLeft;
+       
         let f = window.innerWidth / 10;
+        if(Math.abs(u-f)<20){
+          setInfinity(true)
+        }
+        else{
+          setInfinity(false)
+        }
         let v = ((u * f) / (f - u)) * -1;
         let magnification = (v / u) * -1;
         setmagnification(magnification)
@@ -233,11 +242,14 @@ const [focalLength, setfocallength] = useState(window.innerWidth * 0.1)
           ) : (
             <div></div>
           )}
-          {isInfoOpen ? <InfoSheet index={0} /> : <div></div>}
+          {isInfoOpen ? <InfoSheet index={2} /> : <div></div>}
           <div className={styles.setinput}>
-            <div>
+            <div style={{"display": "flex", "gap": "2rem"}}>
               <p>Magnification: {Math.round(magnification * 100) / 100
 }</p>
+{
+ atInfinity? <strong><p style={{"color": "red"}}>Image at Infnity!</p></strong>:<p></p>
+}
             </div>
             {/* <div>
               <input type="text" placeholder="Set focal length manually" onChange={(evt)=>{setinpfoc( window.innerWidth * 0.01 * evt.target.value)}}  className={styles.inputbox}/>
